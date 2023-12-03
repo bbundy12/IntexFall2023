@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/editBand" method="POST">
+        <fieldset style="width: 0px;">
+            <legend>Edit Band:</legend>
+            <input type="hidden" id="bandID" name="bandID" value="<%= mybands[0].band_id %>">
+            <label for="bandName">Band name:</label>
+            <input type="text" id="bandName" name="bandName" value="<%= mybands[0].band_name %>">
+            <br><br>
+            <label for="singer">Lead singer:</label>
+            <input type="text" id="singer" name="singer" value="<%= mybands[0].lead_singer %>">
+            <br><br>
+            <button type="submit">Save</button>
+        </fieldset>
+    </form>
+</body>
+
+</html>

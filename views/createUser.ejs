@@ -13,13 +13,6 @@
 </head>
 
 <body>
-
-    <script>
-        const storedUsername = localStorage.getItem('username');
-        const storedPassword = localStorage.getItem('password');
-      
-        if (storedUsername === 'Admin' && storedPassword === 'Admin') {
-      </script>
       
       <!-- Start of Form -->
       <form action="/storeUser" method="post">
@@ -34,12 +27,6 @@
         <button type="submit">Create Your Account</button>
       </form>
       
-      <script>
-        } else {
-          // Redirect to the login page
-          window.location.href = "/login";
-        }
-      </script>
 </body>
 
 </html>

@@ -49,19 +49,9 @@ app.get("/survey", (req,res) => {
     }
 });
 
-app.get("/createUser", (req, res) => {
+app.get("/createUser", (req,res) => {
     try {
-        // Check if local storage username/password are equal to "Admin" "Admin"
-        const storedUsername = localStorage.getItem('username');
-        const storedPassword = localStorage.getItem('password');
-
-        if (storedUsername === 'Admin' && storedPassword === 'Admin') {
-            // Render the createUser page
-            res.render("createUser", {});
-        } else {
-            // Redirect to the login page or handle unauthorized access
-            res.redirect("/", {error: "Unauthorized Access"});
-        }
+        res.render("createUser", {});
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: err.message });

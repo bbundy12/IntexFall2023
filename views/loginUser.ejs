@@ -18,6 +18,10 @@
   <form action = "/login" method="post">
     <h2>Log In</h2>
 
+    <% if (error) { %>
+        <p class="error-message"><%= error %></p>
+    <% } %>
+
     <!-- Log In Input -->
     <label for="username">Username</label>
     <input id="username" type="text" name="username">

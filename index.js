@@ -31,14 +31,25 @@ knex.raw('SELECT * from bands')
         console.error('Error connecting to database:', err);
     });
 
-    app.get("/", (req, res) => {
-        try {
-            res.render("loginUser", {});
-        } catch (err) {
-            console.log(err);
-            res.status(500).json({ error: err.message });
-        }
-    });
+app.get("/", (req, res) => {
+    try {
+        res.render("loginUser", {});
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.get("/survey", (req,res) => {
+    try {
+        res.render("survey", {});
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
 
 
 app.listen(port, () => console.log("Express App has started and server is listening!"));            

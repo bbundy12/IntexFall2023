@@ -31,13 +31,11 @@ knex.raw('SELECT * from bands')
     });
 
 app.get("/", (req, res) => {
-    knex.select("band_id", "band_name", "lead_singer").from('bands').then(bands => {
-        res.render("displayBand", {mybands: bands});
+        res.render("loginUser", {});
     }).catch(err => {
         console.log(err);
         res.status(500).json({err});
     });
-});
 
 
 app.listen(port, () => console.log("Express App has started and server is listening!"));            

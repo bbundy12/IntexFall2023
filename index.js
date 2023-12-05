@@ -33,7 +33,7 @@ knex.raw('SELECT * from users')
 
 app.get("/", (req, res) => {
     try {
-        res.render("loginUser", {});
+        res.render("loginUser", {error:null});
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: err.message });

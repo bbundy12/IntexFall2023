@@ -49,6 +49,15 @@ app.get("/survey", (req,res) => {
     }
 });
 
+app.get("/createUser", (req,res) => {
+    try {
+        res.render("createUser", {});
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 
 
 

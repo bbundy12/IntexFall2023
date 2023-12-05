@@ -31,6 +31,17 @@
     <!-- Log In Submit -->
     <button type="submit">Log In to Your Account</button>
   </form>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Store username and password in local storage
+      localStorage.setItem('username', username);
+      localStorage.setItem('password', password);
+    });
+  </script>
 </body>
 
 </html>

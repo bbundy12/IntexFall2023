@@ -58,17 +58,19 @@ app.get("/createUser", (req,res) => {
     }
 });
 
-app.post('/login', async (req,res) => {
+app.post('/login', async (req, res) => {
     try {
         // Check if the username and password match a user in the database
-        var user = await knex.select('Username','Password').from('users').where('Username',req.body.username).andWhere('Password',req.body.password).then();
+        const users = await knex.select('Username', 'Password').from('users').where('Username', req.body.username).andWhere('Password', req.body.password);
 
-        if (user) {
-            // If user is found, you can redirect to a different route or render a page
+        console.log('Number of results:', users.length);
+
+        if (users.length == 1) {
+            // If at least one user is found, you can redirect to a different route or render a page
             res.redirect('/createUser');
         } else {
-            // If user is not found, you can render the login page with an error message
-            res.render('/loginUser', { error: 'Invalid username or password' });
+            // If no user is found, you can render the login page with an error message
+            res.render('loginUser', { error: 'Invalid username or password' });
         }
     } catch (err) {
         console.error('Error logging in:', err);

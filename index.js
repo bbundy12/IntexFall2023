@@ -63,7 +63,7 @@ app.post('/login', (req,res) => {
 
     try {
         // Check if the username and password match a user in the database
-        const user = await knex('users').where({ username, password }).first();
+        const user = knex('users').where({ username, password }).first();
 
         if (user) {
             // If user is found, you can redirect to a different route or render a page

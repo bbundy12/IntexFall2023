@@ -22,7 +22,7 @@ const knex = require("knex")({
     }
 }); 
 
-knex.raw('SELECT * from bands')
+knex.raw('SELECT * from users')
     .then(() => {
         console.log('Connection to database successful');
         // You can start using your knex instance here

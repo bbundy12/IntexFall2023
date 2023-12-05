@@ -70,7 +70,7 @@ app.post('/login', async (req, res) => {
             res.redirect('/createUser');
         } else {
             // If no user is found, you can render the login page with an error message
-            res.render('/loginUser', { error: 'Invalid username or password' });
+            res.render('loginUser', { message: 'Invalid username or password' });
         }
     } catch (err) {
         console.error('Error logging in:', err);

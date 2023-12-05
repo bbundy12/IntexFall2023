@@ -30,11 +30,13 @@ knex.raw('SELECT * from bands')
         console.error('Error connecting to database:', err);
     });
 
-app.get("/", (req, res) => {
-        res.render("loginUser", {});
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json({err});
+    app.get("/", (req, res) => {
+        try {
+            res.render("loginUser", {});
+        } catch (err) {
+            console.log(err);
+            res.status(500).json({ error: err.message });
+        }
     });
 
 

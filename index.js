@@ -58,10 +58,10 @@ app.get("/createUser", (req,res) => {
     }
 });
 
-app.post('/login', (req,res) => {
+app.post('/login', async (req,res) => {
     try {
         // Check if the username and password match a user in the database
-        var user = knex.select('Username','Password').from('users').where('Username',req.body.username).andWhere('Password',req.body.password).then();
+        var user = await knex.select('Username','Password').from('users').where('Username',req.body.username).andWhere('Password',req.body.password).then();
 
         if (user) {
             // If user is found, you can redirect to a different route or render a page

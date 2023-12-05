@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../form_styles.css">
+</head>
+
+<body>
+
+  <!-- Start of Survey -->
+  <form>
+    <h2>Survey</h2>
+
+    <!-- Age -->
+    <label for="age">Age</label>
+    <input id="age" type="number" required>
+
+    <!-- Gender -->
+    <label for="gender">Gender</label>
+    <div id="gender" class="radioSelector">
+      <div class="option" data-value="Male" style="border-radius: 2px 0 0 2px;">Male</div>
+      <div class="option" data-value="Female">Female</div>
+      <div class="option" data-value="Other" style="border-radius: 0 2px 2px 0;">Other</div>
+    </div>
+
+    <!-- Relationship Status -->
+    <label for="relationship_status">Relationship Status</label>
+    <div id="relationship_status" class="radioSelector">
+      <div class="option" data-value="Single" style="border-radius: 2px 0 0 2px;">Single</div>
+      <div class="option" data-value="In a relationship">Relationship</div>
+      <div class="option" data-value="Married">Married</div>
+      <div class="option" data-value="Divorced" style="border-radius: 0 2px 2px 0;">Divorced</div>
+    </div>
+
+    <!-- Occupation Status -->
+    <label for="occupation_status">Occupation Status</label>
+    <div id="occupation_status" class="radioSelector">
+      <div class="option" data-value="School Student" style="border-radius: 2px 0 0 2px;">School Student</div>
+      <div class="option" data-value="University Student">University Student</div>
+      <div class="option" data-value="Salaried Worker">Salaried Worker</div>
+      <div class="option" data-value="Retired" style="border-radius: 0 2px 2px 0;">Retired</div>
+    </div>
+
+    <!-- Affiliated Organizations -->
+    <label for="affiliated_organizations">What type of organizations are you affiliated with?</label>
+    <div class="token-container">
+      <input id="private-hidden" type="checkbox" value="Private" hidden />
+      <label class="token" for="private-hidden">Private</label>
+      <input id="school-hidden" type="checkbox" value="Facebook" hidden />
+      <label class="token" for="school-hidden">School</label>
+      <input id="university-hidden" type="checkbox" value="Twitter" hidden />
+      <label class="token" for="university-hidden">University</label>
+      <input id="company-hidden" type="checkbox" value="TikTok" hidden />
+      <label class="token" for="company-hidden">Company</label>
+      <input id="government-hidden" type="checkbox" value="YouTube" hidden />
+      <label class="token" for="government-hidden">Government</label>
+    </div>
+
+    <!-- Use Social Media -->
+    <label for="use_social_media">Do you use social media?</label>
+    <div id="use_social_media" class="radioSelector">
+      <div class="option" data-value="Yes" style="border-radius: 2px 0 0 2px;">Yes</div>
+      <div class="option" data-value="No" style="border-radius: 0 2px 2px 0;">No</div>
+    </div>
+
+    <!-- Common Social Media Platforms -->
+    <label for="token-container">What social media platforms do you commonly use?</label>
+    <div class="token-container">
+      <input id="instagram-hidden" type="checkbox" value="Instagram" hidden />
+      <label class="token" for="instagram-hidden">Instagram</label>
+      <input id="facebook-hidden" type="checkbox" value="Facebook" hidden />
+      <label class="token" for="facebook-hidden">Facebook</label>
+      <input id="twitter-hidden" type="checkbox" value="Twitter" hidden />
+      <label class="token" for="twitter-hidden">Twitter</label>
+      <input id="tiktok-hidden" type="checkbox" value="TikTok" hidden />
+      <label class="token" for="tiktok-hidden">TikTok</label>
+      <input id="youtube-hidden" type="checkbox" value="YouTube" hidden />
+      <label class="token" for="youtube-hidden">YouTube</label>
+      <input id="discord-hidden" type="checkbox" value="Discord" hidden />
+      <label class="token" for="discord-hidden">Discord</label>
+      <input id="reddit-hidden" type="checkbox" value="Reddit" hidden />
+      <label class="token" for="reddit-hidden">Reddit</label>
+      <input id="pinterest-hidden" type="checkbox" value="Pinterest" hidden />
+      <label class="token" for="pinterest-hidden">Pinterest</label>
+      <input id="snapchat-hidden" type="checkbox" value="Snapchat" hidden />
+      <label class="token" for="snapchat-hidden">Snapchat</label>
+    </div>
+
+    <!-- Average Time on Social Media -->
+    <label for="average_time_on_social_media">What is the average time you spend on social media every day?</label>
+    <div id="average_time_on_social_media" class="radioSelector">
+      <div class="option" data-value="< 1 hour" style="border-radius: 2px 0 0 2px;">&lt; 1 Hour</div>
+      <div class="option" data-value="1-2 hours">1-2 Hours</div>
+      <div class="option" data-value="2-3 hours">2-3 Hours</div>
+      <div class="option" data-value="3-4 hours">3-4 Hours</div>
+      <div class="option" data-value="4-5 hours">4-5 Hours</div>
+      <div class="option" data-value="5+ hours" style="border-radius: 2px 0 0 2px;">5+ Hours</div>
+    </div>
+
+    <!-- Question 9 -->
+    <label class="rating-label-1-5" for="question-9-container">How often do you find yourself using Social media without a specific purpose?</label>
+    <div class="question-divider"></div>
+    <div id="question-9-container" class="rating-container-1-5">
+      <input id="rating-9-1" type="radio" name="question-9" value="1">
+      <label for="rating-9-1" class="rating-1 rating-label">1</label>
+      <input id="rating-9-2" type="radio" name="question-9" value="2">
+      <label for="rating-9-2" class="rating-2 rating-label">2</label>
+      <input id="rating-9-3" type="radio" name="question-9" value="3">
+      <label for="rating-9-3" class="rating-3 rating-label">3</label>
+      <input id="rating-9-4" type="radio" name="question-9" value="4">
+      <label for="rating-9-4" class="rating-4 rating-label">4</label>
+      <input id="rating-9-5" type="radio" name="question-9" value="5">
+      <label for="rating-9-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 10 -->
+    <label class="rating-label-1-5" for="question-10-container">How often do you get distracted by social media when you are busy doing something?</label>
+    <div class="question-divider"></div>
+    <div id="question-10-container" class="rating-container-1-5">
+      <input id="rating-10-1" type="radio" name="question-10" value="1">
+      <label for="rating-10-1" class="rating-1 rating-label">1</label>
+      <input id="rating-10-2" type="radio" name="question-10" value="2">
+      <label for="rating-10-2" class="rating-2 rating-label">2</label>
+      <input id="rating-10-3" type="radio" name="question-10" value="3">
+      <label for="rating-10-3" class="rating-3 rating-label">3</label>
+      <input id="rating-10-4" type="radio" name="question-10" value="4">
+      <label for="rating-10-4" class="rating-4 rating-label">4</label>
+      <input id="rating-10-5" type="radio" name="question-10" value="5">
+      <label for="rating-10-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 11 -->
+    <label class="rating-label-1-5" for="question-11-container">Do you feel restless if you haven’t used social media in a while?</label>
+    <div class="question-divider"></div>
+    <div id="question-11-container" class="rating-container-1-5">
+      <input id="rating-11-1" type="radio" name="question-11" value="1">
+      <label for="rating-11-1" class="rating-1 rating-label">1</label>
+      <input id="rating-11-2" type="radio" name="question-11" value="2">
+      <label for="rating-11-2" class="rating-2 rating-label">2</label>
+      <input id="rating-11-3" type="radio" name="question-11" value="3">
+      <label for="rating-11-3" class="rating-3 rating-label">3</label>
+      <input id="rating-11-4" type="radio" name="question-11" value="4">
+      <label for="rating-11-4" class="rating-4 rating-label">4</label>
+      <input id="rating-11-5" type="radio" name="question-11" value="5">
+      <label for="rating-11-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 12 -->
+    <label class="rating-label-1-5" for="question-12-container">How easily distracted are you?</label>
+    <div class="question-divider"></div>
+    <div id="question-12-container" class="rating-container-1-5">
+      <input id="rating-12-1" type="radio" name="question-12" value="1">
+      <label for="rating-12-1" class="rating-1 rating-label">1</label>
+      <input id="rating-12-2" type="radio" name="question-12" value="2">
+      <label for="rating-12-2" class="rating-2 rating-label">2</label>
+      <input id="rating-12-3" type="radio" name="question-12" value="3">
+      <label for="rating-12-3" class="rating-3 rating-label">3</label>
+      <input id="rating-12-4" type="radio" name="question-12" value="4">
+      <label for="rating-12-4" class="rating-4 rating-label">4</label>
+      <input id="rating-12-5" type="radio" name="question-12" value="5">
+      <label for="rating-12-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 13 -->
+    <label class="rating-label-1-5" for="question-13-container">How much are you bothered by worries?</label>
+    <div class="question-divider"></div>
+    <div id="question-13-container" class="rating-container-1-5">
+      <input id="rating-13-1" type="radio" name="question-13" value="1">
+      <label for="rating-13-1" class="rating-1 rating-label">1</label>
+      <input id="rating-13-2" type="radio" name="question-13" value="2">
+      <label for="rating-13-2" class="rating-2 rating-label">2</label>
+      <input id="rating-13-3" type="radio" name="question-13" value="3">
+      <label for="rating-13-3" class="rating-3 rating-label">3</label>
+      <input id="rating-13-4" type="radio" name="question-13" value="4">
+      <label for="rating-13-4" class="rating-4 rating-label">4</label>
+      <input id="rating-13-5" type="radio" name="question-13" value="5">
+      <label for="rating-13-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 14 -->
+    <label class="rating-label-1-5" for="question-14-container">Do you find it difficult to concentrate on things?</label>
+    <div class="question-divider"></div>
+    <div id="question-14-container" class="rating-container-1-5">
+      <input id="rating-14-1" type="radio" name="question-14" value="1">
+      <label for="rating-14-1" class="rating-1 rating-label">1</label>
+      <input id="rating-14-2" type="radio" name="question-14" value="2">
+      <label for="rating-14-2" class="rating-2 rating-label">2</label>
+      <input id="rating-14-3" type="radio" name="question-14" value="3">
+      <label for="rating-14-3" class="rating-3 rating-label">3</label>
+      <input id="rating-14-4" type="radio" name="question-14" value="4">
+      <label for="rating-14-4" class="rating-4 rating-label">4</label>
+      <input id="rating-14-5" type="radio" name="question-14" value="5">
+      <label for="rating-14-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 15 -->
+    <label class="rating-label-1-5" for="question-15-container">How often do you compare yourself to other successful people through the use of social media?</label>
+    <div class="question-divider"></div>
+    <div id="question-15-container" class="rating-container-1-5">
+      <input id="rating-15-1" type="radio" name="question-15" value="1">
+      <label for="rating-15-1" class="rating-1 rating-label">1</label>
+      <input id="rating-15-2" type="radio" name="question-15" value="2">
+      <label for="rating-15-2" class="rating-2 rating-label">2</label>
+      <input id="rating-15-3" type="radio" name="question-15" value="3">
+      <label for="rating-15-3" class="rating-3 rating-label">3</label>
+      <input id="rating-15-4" type="radio" name="question-15" value="4">
+      <label for="rating-15-4" class="rating-4 rating-label">4</label>
+      <input id="rating-15-5" type="radio" name="question-15" value="5">
+      <label for="rating-15-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 16 -->
+    <label class="rating-label-1-5" for="question-16-container">Following the previous question, how do you feel about these comparisons, generally speaking?</label>
+    <div class="question-divider"></div>
+    <div id="question-16-container" class="rating-container-1-5">
+      <input id="rating-16-1" type="radio" name="question-16" value="1">
+      <label for="rating-16-1" class="rating-1 rating-label">1</label>
+      <input id="rating-16-2" type="radio" name="question-16" value="2">
+      <label for="rating-16-2" class="rating-2 rating-label">2</label>
+      <input id="rating-16-3" type="radio" name="question-16" value="3">
+      <label for="rating-16-3" class="rating-3 rating-label">3</label>
+      <input id="rating-16-4" type="radio" name="question-16" value="4">
+      <label for="rating-16-4" class="rating-4 rating-label">4</label>
+      <input id="rating-16-5" type="radio" name="question-16" value="5">
+      <label for="rating-16-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 17 -->
+    <label class="rating-label-1-5" for="question-17-container">How often do you look to seek validation from features of social media?</label>
+    <div class="question-divider"></div>
+    <div id="question-17-container" class="rating-container-1-5">
+      <input id="rating-17-1" type="radio" name="question-17" value="1">
+      <label for="rating-17-1" class="rating-1 rating-label">1</label>
+      <input id="rating-17-2" type="radio" name="question-17" value="2">
+      <label for="rating-17-2" class="rating-2 rating-label">2</label>
+      <input id="rating-17-3" type="radio" name="question-17" value="3">
+      <label for="rating-17-3" class="rating-3 rating-label">3</label>
+      <input id="rating-17-4" type="radio" name="question-17" value="4">
+      <label for="rating-17-4" class="rating-4 rating-label">4</label>
+      <input id="rating-17-5" type="radio" name="question-17" value="5">
+      <label for="rating-17-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 18 -->
+    <label class="rating-label-1-5" for="question-18-container">How often do you feel depressed or down?</label>
+    <div class="question-divider"></div>
+    <div id="question-18-container" class="rating-container-1-5">
+      <input id="rating-18-1" type="radio" name="question-18" value="1">
+      <label for="rating-18-1" class="rating-1 rating-label">1</label>
+      <input id="rating-18-2" type="radio" name="question-18" value="2">
+      <label for="rating-18-2" class="rating-2 rating-label">2</label>
+      <input id="rating-18-3" type="radio" name="question-18" value="3">
+      <label for="rating-18-3" class="rating-3 rating-label">3</label>
+      <input id="rating-18-4" type="radio" name="question-18" value="4">
+      <label for="rating-18-4" class="rating-4 rating-label">4</label>
+      <input id="rating-18-5" type="radio" name="question-18" value="5">
+      <label for="rating-18-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 19 -->
+    <label class="rating-label-1-5" for="question-19-container">How frequently does your interest in daily activities fluctuate?</label>
+    <div class="question-divider"></div>
+    <div id="question-19-container" class="rating-container-1-5">
+      <input id="rating-19-1" type="radio" name="question-19" value="1">
+      <label for="rating-19-1" class="rating-1 rating-label">1</label>
+      <input id="rating-19-2" type="radio" name="question-19" value="2">
+      <label for="rating-19-2" class="rating-2 rating-label">2</label>
+      <input id="rating-19-3" type="radio" name="question-19" value="3">
+      <label for="rating-19-3" class="rating-3 rating-label">3</label>
+      <input id="rating-19-4" type="radio" name="question-19" value="4">
+      <label for="rating-19-4" class="rating-4 rating-label">4</label>
+      <input id="rating-19-5" type="radio" name="question-19" value="5">
+      <label for="rating-19-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Question 20 -->
+    <label class="rating-label-1-5" for="question-20-container">How often do you face issues regarding sleep?</label>
+    <div class="question-divider"></div>
+    <div id="question-20-container" class="rating-container-1-5">
+      <input id="rating-20-1" type="radio" name="question-20" value="1">
+      <label for="rating-20-1" class="rating-1 rating-label">1</label>
+      <input id="rating-20-2" type="radio" name="question-20" value="2">
+      <label for="rating-20-2" class="rating-2 rating-label">2</label>
+      <input id="rating-20-3" type="radio" name="question-20" value="3">
+      <label for="rating-20-3" class="rating-3 rating-label">3</label>
+      <input id="rating-20-4" type="radio" name="question-20" value="4">
+      <label for="rating-20-4" class="rating-4 rating-label">4</label>
+      <input id="rating-20-5" type="radio" name="question-20" value="5">
+      <label for="rating-20-5" class="rating-5 rating-label">5</label>
+    </div>
+
+    <!-- Survey Submit -->
+    <button type="submit">Submit Survey</button>
+  </form>
+
+  <!-- JavaScript -->
+  <script>
+    // enables functionality for radio selectors
+    document.addEventListener('DOMContentLoaded', function () {
+      let groups = document.querySelectorAll('.radioSelector');
+      groups.forEach(function (group) {
+        let options = group.querySelectorAll('.option');
+        options.forEach(function (option) {
+          option.addEventListener('click', function () {
+            options.forEach(function (otherOption) {
+              otherOption.classList.remove('selected');
+            });
+            option.classList.add('selected');
+          });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

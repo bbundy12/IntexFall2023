@@ -20,7 +20,7 @@ input,
 select,
 button,
 .radioSelector div {
-  font-family: Poppins;
+  font-family: “Poppins”, sans-serif;
 }
 
 header {

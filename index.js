@@ -107,7 +107,7 @@ app.post('/updatePassword', (req, res) => {
             .update({ Password: newPassword })
             .then(() => {
                 // Password updated successfully, redirect to a success page
-                res.redirect('/updatedPassword');
+                res.redirect('updatedPassword');
             })
             .catch((error) => {
                 // Handle database update error (redirect to editUser with an error)

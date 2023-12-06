@@ -99,11 +99,11 @@ app.post('/updatePassword', (req, res) => {
         const currentPassword = req.body.currentPassword;
         const newPassword = req.body.newPassword;
         const confirmNewPassword = req.body.confirmNewPassword;
-        const localStorageUsername = req.body.localStorageUsername;
+        const Username = req.body.username;
 
         // Update the password in the database
         knex('users')
-            .where('Username', localStorageUsername)
+            .where('Username', Username)
             .update({ Password: newPassword })
             .then(() => {
                 // Password updated successfully, redirect to a success page

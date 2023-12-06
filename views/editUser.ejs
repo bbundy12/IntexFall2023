@@ -20,7 +20,7 @@
   
       <!-- Edit User Input - Username -->
       <label for="username">Username</label>
-      <input id="username" name="username" type="text" value="<%= localStorage.getItem('username') %>" readonly>
+      <input id="username" name="username" type="text" required>
   
       <!-- Edit User Input - Current Password -->
       <label for="currentPassword">Current Password</label>
@@ -42,10 +42,6 @@
     </form>
   
     <script>
-    // Set the value of a hidden input field before submitting the form
-    document.getElementById('editUserForm').addEventListener('submit', function (event) {
-      document.getElementById('localStorageUsername').value = localStorage.getItem('username');
-    });
 
     function validateForm() {
       // Get values from password fields

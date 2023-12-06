@@ -67,7 +67,7 @@ app.post('/login', async (req, res) => {
 
         if (users.length == 1 && users[0].Username === 'Admin' && users[0].Password === 'Admin') {
             // If at least one user is found, you can redirect to a different route or render a page
-            res.redirect('/createUser');
+            res.redirect('/adminLanding');
         } 
         else if (users.length === 1) {
             res.redirect('/userLanding')

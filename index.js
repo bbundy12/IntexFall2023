@@ -158,7 +158,7 @@ app.get('/adminLanding', (req, res) => {
         affiliated_with_private: req.body.private_hidden, affiliated_with_company: req.body.company_hidden, affiliated_with_government: req.body.government_hidden,
         social_media_usage: req.body.social_media_usage, average_time_on_social_media: req.body.average_social_media_time, social_media_usage_without_purpose: req.body.question_9,
         social_media_distraction_frequency: req.body.question_10, restlessness_due_to_social_media: req.body.question_11,
-        general_distractability_scale: req.body.question_12, general_worry_bother_scale: req.body.question_13, general_difficulty_concentrating: req.body.question_14,
+        general_distractibility_scale: req.body.question_12, general_worry_bother_scale: req.body.question_13, general_difficulty_concentrating: req.body.question_14,
         comparing_yourself_to_other_successful_people_frequency: req.body.question_15, feelings_about_social_media_comparisons: req.body.question_16,
         seek_validation_from_social_media: req.body.question_17, general_depression_frequency: req.body.question_18,
         general_daily_activities_interest_fluctuation_scale: req.body.question_19, general_sleep_issues_scale: req.body.question_20}).

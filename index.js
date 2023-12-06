@@ -130,6 +130,11 @@ app.get('/updatedPassword', (req, res) => {
 app.get('/userLanding', (req, res) => {
     res.render('userLanding');
   });
+
+app.get('/adminLanding', (req, res) => {
+    res.render('adminLanding');
+  });
+
   
 
 

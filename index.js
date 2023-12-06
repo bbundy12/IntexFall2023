@@ -144,7 +144,7 @@ app.get('/adminLanding', (req, res) => {
   });
 
   app.post("/storeSurvey", (req,res) => {
-    knex("mentalhealthstats").insert({timestamp: getdatetime(), location: "Provo", age: req.body.age, gender: req.body.gender, 
+    knex("mentalhealthstats").insert({timestamp: timestamp, location: "Provo", age: req.body.age, gender: req.body.gender, 
         relationship_status: req.body.relationship_status, occupation_status: req.body.occupation_status, affiliated_with_university: req.body.university_hidden, affiliated_with_school: req.body.school_hidden,
         affiliated_with_private: req.body.private_hidden, affiliated_with_company: req.body.company_hidden, affiliated_with_government: req.body.government_hidden,
         social_media_usage: req.body.social_media_usage, average_time_on_social_media: req.body.average_social_media_time, social_media_usage_without_purpose: req.body.question_9,

@@ -20,6 +20,9 @@
   <form action="/storeSurvey" method="post">
     <h2>Survey</h2>
 
+    <!-- Hidden Datetime Input -->
+    <input id="datetime" type="hidden" name="timestamp" />
+
     <!-- Age -->
     <p>Age</p>
     <input id="age" type="number" name="age" hidden required />
@@ -322,6 +325,14 @@
     <!-- Survey Submit -->
     <button type="submit">Submit Survey</button>
   </form>
+
+  <script>
+    document.getElementById('surveyForm').addEventListener('submit', function() {
+      // Set the value of the hidden datetime input to the current datetime
+      document.getElementById('datetime').value = new Date().toISOString();
+    });
+  </script>
+
 </body>
 
 </html>

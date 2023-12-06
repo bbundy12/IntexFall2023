@@ -42,7 +42,12 @@
         // Store username and password in local storage
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
-    }});
+    }
+    else {
+        // Clear localStorage if the credentials are incorrect
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
+      }});
   </script>
 </body>
 

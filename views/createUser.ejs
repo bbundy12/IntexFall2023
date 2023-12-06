@@ -24,7 +24,7 @@
     const storedUsername = localStorage.getItem('username');
     const storedPassword = localStorage.getItem('password');
 
-    if (storedUsername === 'Admin' && storedPassword === 'Admin') {
+    if (storedUsername === 'Admin') {
       function validateForm() {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;

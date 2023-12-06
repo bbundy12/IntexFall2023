@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Log In</title>
-  <link rel="stylesheet" href="/form_styles.css" type="text/css">
-  <link rel="stylesheet" href="/styles.css" type="text/css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/form_styles.css">
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -18,18 +20,20 @@
   <form id="loginForm" action="/login" method="post">
     <h2>Log In</h2>
 
-    <% if (typeof error !== 'undefined') { %>
-      <p class="error-message" style="color: red; font-style: italic;"><%= error %></p>
-    <% } %>
+    <% if (typeof error !=='undefined' ) { %>
+      <p id="error-message" style="display: block;">
+        <%= error %>
+      </p>
+      <% } %>
 
-    <!-- Log In Input -->
-    <label for="username">Username</label>
-    <input id="username" type="text" name="username">
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password">
+        <!-- Log In Input -->
+        <label for="username">Username</label>
+        <input id="username" type="text" name="username">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password">
 
-    <!-- Log In Submit -->
-    <button type="submit">Log In to Your Account</button>
+        <!-- Log In Submit -->
+        <button type="submit">Log In to Your Account</button>
   </form>
 
   <script>
@@ -42,12 +46,13 @@
         // Store username and password in local storage
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
-    }
-    else {
+      }
+      else {
         // Store username and password in local storage
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
-      }});
+      }
+    });
   </script>
 </body>
 

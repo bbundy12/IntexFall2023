@@ -5,45 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Account</title>
+  <!-- CSS -->
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/form_styles.css">
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <style>
-    .error-message {
-      color: red;
-      font-style: italic;
-    }
-  </style>
 </head>
 
 <body>
-  <script>
-    // Check if local storage username/password are equal to "Admin" "Admin"
-    const storedUsername = localStorage.getItem('username');
-    const storedPassword = localStorage.getItem('password');
-
-    if (storedUsername === 'Admin') {
-      function validateForm() {
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        const errorElement = document.getElementById('error-message');
-
-        if (password !== confirmPassword) {
-          errorElement.textContent = "Error: Password's don't match.";
-          return false; // Prevent the form submission
-        }
-
-        // Clear any previous error messages
-        errorElement.textContent = '';
-        return true; // Allow the form submission
-      }
-    } else {
-      // Redirect to an unauthorized access page or handle it accordingly
-      window.location.href = "/unauthorized";
-    }
-  </script>
 
   <!-- Start of Form -->
   <form action="/storeUser" method="post" onsubmit="return validateForm()">
@@ -58,11 +29,40 @@
     <input id="confirmPassword" name="confirmPassword" type="password">
 
     <!-- Error Message -->
-    <p id="error-message" class="error-message"></p>
+    <p id="error-message"></p>
 
     <!-- Create Account Submit -->
     <button type="submit">Create Your Account</button>
   </form>
+
+  <!-- JavaScript -->
+  <script>
+    // Check if local storage username/password are equal to "Admin" "Admin"
+    const storedUsername = localStorage.getItem('username');
+    const storedPassword = localStorage.getItem('password');
+
+    if (storedUsername === 'Admin' && storedPassword === 'Admin') {
+      function validateForm() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+          // Display error message
+          document.getElementById('error-message').style.display = 'block';
+          return false; // Prevent form submission
+        }
+
+        // Hide error message if passwords match
+        document.getElementById('error-message').style.display = 'none';
+        return true; // Allow form submission
+
+      }
+    } else {
+      // Redirect to an unauthorized access page or handle it accordingly
+      window.location.href = "/unauthorized";
+    }
+  </script>
 </body>
 
 </html>

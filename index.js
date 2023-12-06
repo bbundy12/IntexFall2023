@@ -139,6 +139,10 @@ app.get('/adminLanding', (req, res) => {
     res.render('unauthorized');
   });
 
+  app.get('/login', (req, res) => {
+    res.render('loginUser');
+  });
+
   
 
 

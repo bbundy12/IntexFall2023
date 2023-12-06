@@ -14,49 +14,52 @@
 
 <body>
 
-  <!-- Start of Form -->
-  <form id="editUserForm" action="/updatePassword" method="post" onsubmit="return validateForm()">
-    <h2>Edit User</h2>
-
-    <!-- Hidden Input for LocalStorage Username -->
-    <input type="hidden" name="localStorageUsername" id="localStorageUsername" value="<%= localStorage.getItem('username') %>">
-
-    <!-- Edit User Input -->
-    <label for="currentPassword">Current Password</label>
-    <input id="currentPassword" name="currentPassword" type="password" required>
-
-    <label for="newPassword">New Password</label>
-    <input id="newPassword" name="newPassword" type="password" required>
-
-    <label for="confirmNewPassword">Confirm New Password</label>
-    <input id="confirmNewPassword" name="confirmNewPassword" type="password" required>
-
-    <!-- Error Message -->
-    <p id="error-message" style="color: red; font-style: italic; display: none;">Passwords do not match.</p>
-
-    <!-- Edit User Submit -->
-    <button type="submit">Update Password</button>
-  </form>
-
-  <script>
-    function validateForm() {
-      // Get values from password fields
-      var newPassword = document.getElementById('newPassword').value;
-      var confirmNewPassword = document.getElementById('confirmNewPassword').value;
-
-      // Check if passwords match
-      if (newPassword !== confirmNewPassword) {
-        // Display error message
-        document.getElementById('error-message').style.display = 'block';
-        return false; // Prevent form submission
+    <!-- Start of Form -->
+    <form id="editUserForm" action="/updatePassword" method="post" onsubmit="return validateForm()">
+      <h2>Edit User</h2>
+  
+      <!-- Edit User Input - Username -->
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" value="<%= localStorage.getItem('username') %>" readonly>
+  
+      <!-- Edit User Input - Current Password -->
+      <label for="currentPassword">Current Password</label>
+      <input id="currentPassword" name="currentPassword" type="password" required>
+  
+      <!-- Edit User Input - New Password -->
+      <label for="newPassword">New Password</label>
+      <input id="newPassword" name="newPassword" type="password" required>
+  
+      <!-- Edit User Input - Confirm New Password -->
+      <label for="confirmNewPassword">Confirm New Password</label>
+      <input id="confirmNewPassword" name="confirmNewPassword" type="password" required>
+  
+      <!-- Error Message -->
+      <p id="error-message" style="color: red; font-style: italic; display: none;">Passwords do not match.</p>
+  
+      <!-- Edit User Submit -->
+      <button type="submit">Update Password</button>
+    </form>
+  
+    <script>
+      function validateForm() {
+        // Get values from password fields
+        var newPassword = document.getElementById('newPassword').value;
+        var confirmNewPassword = document.getElementById('confirmNewPassword').value;
+  
+        // Check if passwords match
+        if (newPassword !== confirmNewPassword) {
+          // Display error message
+          document.getElementById('error-message').style.display = 'block';
+          return false; // Prevent form submission
+        }
+  
+        // Hide error message if passwords match
+        document.getElementById('error-message').style.display = 'none';
+        return true; // Allow form submission
       }
-
-      // Hide error message if passwords match
-      document.getElementById('error-message').style.display = 'none';
-      return true; // Allow form submission
-    }
-  </script>
-
-</body>
+    </script>
+  
+  </body>
 
 </html>

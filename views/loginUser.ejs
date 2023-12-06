@@ -18,7 +18,7 @@
   <form id="loginForm" action="/login" method="post">
     <h2>Log In</h2>
 
-    <% if (error) { %>
+    <% if (typeof error !== 'undefined') { %>
       <p class="error-message" style="color: red; font-style: italic;"><%= error %></p>
     <% } %>
 

@@ -21,7 +21,7 @@
     <h2>Survey</h2>
 
     <!-- Hidden Datetime Input -->
-    <input id="timestamp" type="hidden" name="timestamp"  value="<%= getdatetime() %>"/>
+    <input id="timestamp" type="text" name="timestamp"  value="" hidden/>
 
     <!-- Age -->
     <p>Age</p>
@@ -325,6 +325,19 @@
     <!-- Survey Submit -->
     <button type="submit">Submit Survey</button>
   </form>
+
+  <script>
+    // Set the current datetime in the desired format
+    document.getElementById("timestamp").value = new Date().toLocaleString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false // Use 24-hour format
+    });
+  </script>
 
 </body>
 

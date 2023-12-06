@@ -159,60 +159,64 @@ app.get('/adminLanding', (req, res) => {
     };
   
     knex("mentalhealthstats").insert({
-      timestamp: timestamp,
-      location: "Provo",
-      age: req.body.age,
-      gender: req.body.gender,
-      relationship_status: req.body.relationship_status,
-      occupation_status: req.body.occupation_status,
-      affiliated_with_university: handleNullOrUndefined(req.body.university_hidden),
-      affiliated_with_school: handleNullOrUndefined(req.body.school_hidden),
-      affiliated_with_private: handleNullOrUndefined(req.body.private_hidden),
-      affiliated_with_company: handleNullOrUndefined(req.body.company_hidden),
-      affiliated_with_government: handleNullOrUndefined(req.body.government_hidden),
-      social_media_usage: req.body.social_media_usage,
-      average_time_on_social_media: req.body.average_social_media_time,
-      social_media_usage_without_purpose: req.body.question_9,
-      social_media_distraction_frequency: req.body.question_10,
-      restlessness_due_to_social_media: req.body.question_11,
-      general_distractibility_scale: req.body.question_12,
-      general_worry_bother_scale: req.body.question_13,
-      general_difficulty_concentrating: req.body.question_14,
-      comparing_yourself_to_other_successful_people_frequency: req.body.question_15,
-      feelings_about_social_media_comparisons: req.body.question_16,
-      seek_validation_from_social_media: req.body.question_17,
-      general_depression_frequency: req.body.question_18,
-      general_daily_activities_interest_fluctuation_scale: req.body.question_19,
-      general_sleep_issues_scale: req.body.question_20
-    }).
-      returning("person_id").then((mentalHealthStatsIds) => {
-        console.log(mentalHealthStatsIds[0]);
+        timestamp: timestamp,
+        location: "Provo",
+        age: req.body.age,
+        gender: req.body.gender,
+        relationship_status: req.body.relationship_status,
+        occupation_status: req.body.occupation_status,
+        affiliated_with_university: handleNullOrUndefined(req.body.university_hidden),
+        affiliated_with_school: handleNullOrUndefined(req.body.school_hidden),
+        affiliated_with_private: handleNullOrUndefined(req.body.private_hidden),
+        affiliated_with_company: handleNullOrUndefined(req.body.company_hidden),
+        affiliated_with_government: handleNullOrUndefined(req.body.government_hidden),
+        social_media_usage: req.body.social_media_usage,
+        average_time_on_social_media: req.body.average_social_media_time,
+        social_media_usage_without_purpose: req.body.question_9,
+        social_media_distraction_frequency: req.body.question_10,
+        restlessness_due_to_social_media: req.body.question_11,
+        general_distractibility_scale: req.body.question_12,
+        general_worry_bother_scale: req.body.question_13,
+        general_difficulty_concentrating: req.body.question_14,
+        comparing_yourself_to_other_successful_people_frequency: req.body.question_15,
+        feelings_about_social_media_comparisons: req.body.question_16,
+        seek_validation_from_social_media: req.body.question_17,
+        general_depression_frequency: req.body.question_18,
+        general_daily_activities_interest_fluctuation_scale: req.body.question_19,
+        general_sleep_issues_scale: req.body.question_20
+      })
+      .returning("person_id")
+      .then(async (mentalHealthStatsIds) => {
         const mentalHealthStatsId = mentalHealthStatsIds[0];
-        console.log(mentalHealthStatsId);
-        console.log(req.body.facebook_hidden);
         const socialMediaPlatforms = [
           "instagram", "facebook", "twitter", "tiktok", "youtube",
           "discord", "reddit", "pinterest", "snapchat"
         ];
-        socialMediaPlatforms.forEach(platform => {
+        for (const platform of socialMediaPlatforms) {
           if (req.body[`${platform}_hidden`]) {
-            console.log(platform)
-            knex("socialmedia").insert({person_id: mentalHealthStatsId, social_media_platform: platform});
+            try {
+              await knex("socialmedia").insert({
+                person_id: mentalHealthStatsId,
+                social_media_platform: platform
+              });
+            } catch (error) {
+              console.error(`Error inserting into socialmedia for platform ${platform}:`, error);
+              throw error; // rethrow the error to be caught by the outer catch
+            }
           }
-        });
+        }
       })
       .then(() => {
         res.redirect("/");
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error in transaction:", error);
         res.status(500).send("Internal Server Error");
-      });
-  });
+    })
+});
   
 
   
 
 
-app.listen(port, () => console.log("Express App has started and server is listening!"));            
-        
+app.listen(port, () => console.log("Express App has started and server is listening!"));

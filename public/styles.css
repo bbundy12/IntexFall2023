@@ -6,11 +6,12 @@
   --grey-accent: #c0c5c1;
   --off-white: #fafafa;
 }
-
+​
 body {
   margin: 0;
+  overflow-x: hidden;
 }
-
+​
 h1,
 h2,
 p,
@@ -20,32 +21,33 @@ input,
 select,
 button,
 .radioSelector div {
-  font-family: “Poppins”, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-
+​
 header {
-  height: 85vh;
-  padding: 0 100px;
   display: flex;
+  width: calc(60% - 120px);
   flex-direction: column;
   align-items: baseline;
   justify-content: center;
+  height: calc(85vh);
+  padding: 0 0 0 100px;
 }
-
+​
 h1 {
   font-size: 3.5rem;
   font-weight: 700;
   color: var(--secondary-dark);
   margin: 0;
 }
-
+​
 header p {
   font-size: 1.25rem;
   font-weight: 300;
   color: var(--secondary-dark);
   margin: 0;
 }
-
+​
 header a {
   background-color: var(--primary-color);
   color: white;
@@ -59,25 +61,28 @@ header a {
   transition: 0.35s ease-in-out;
   border-radius: 5px;
 }
-
+​
 header a:hover {
   color: var(--primary-color);
   background-color: transparent;
   border: 2px solid var(--primary-color);
 }
-
+​
 #circle {
-  position: fixed;
-  top: 0%;
-  right: 0%;
-  transform: translate(50%, -50%);
-  width: 160vh;
-  height: 160vh;
+  position: absolute;
+  display: inline-block;
+  width: 110vh;
+  height: 110vh;
+  transform: translate(60vw, -25%);
   border-radius: 50%;
-  z-index: -1;
-  background-color: var(--secondary-dark);
+  fill: var(--secondary-dark);
+  animation: rotate 80s linear infinite;
 }
-
+​
+.svg-outer {
+  fill: var(--secondary-light);
+}
+​
 form {
   min-width: 400px;
   max-width: 675px;
@@ -89,11 +94,20 @@ form {
   display: flex;
   flex-direction: column;
 }
-
+​
 form * {
   display: block;
 }
-
+​
+.rating-container-1-5 input,
+.token-container input[type="checkbox"],
+.radioSelector input {
+  margin: 2.5em 0 0 0;
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+}
+​
 h2 {
   margin: 0 0 10px 0;
   font-size: 2.5rem;
@@ -101,12 +115,12 @@ h2 {
   font-weight: 600;
   color: var(--primary-color);
 }
-
-label {
+​
+form p {
   margin-bottom: 5px;
   font-size: 0.9em;
 }
-
+​
 input[type="text"],
 input[type="number"],
 input[type="password"],
@@ -119,13 +133,13 @@ select {
   border-radius: 2px;
   font-size: 1em;
 }
-
+​
 .radioSelector {
   display: flex;
   width: 100%;
 }
-
-.radioSelector div {
+​
+.radioSelector label {
   flex: 1;
   margin: 0 auto;
   cursor: pointer;
@@ -136,28 +150,28 @@ select {
   transition: 0.25s ease-in-out;
   border: var(--grey-accent) 1px solid;
 }
-
-.radioSelector div:hover {
+​
+.radioSelector label:hover {
   border: var(--primary-color) 1px solid;
   z-index: 1;
   transition: z-index 0s;
 }
-
-.radioSelector div.selected {
+​
+.radioSelector input:checked + label {
   border: var(--primary-color) 1px solid;
   background-color: var(--primary-color);
   color: white;
   z-index: 1;
   transition: z-index 0s;
 }
-
+​
 .token-container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35em;
   margin: 0 0 30px 0;
 }
-
+​
 .token {
   display: inline-flex;
   margin: 0.1em 0;
@@ -172,19 +186,15 @@ select {
   border: 1px solid transparent;
   transition: 0.2s ease-in-out;
 }
-
-.token-container input[type="checkbox"] {
-  display: none;
-}
-
+​
 .token:hover {
   border: 1px solid var(--primary-color);
 }
-
+​
 .token-container input[type="checkbox"]:checked + .token {
   background-color: var(--primary-color);
 }
-
+​
 .rating-label-1-5 {
   text-align: left;
 }
@@ -193,16 +203,12 @@ select {
   justify-content: space-evenly;
   margin: 0px 0px 50px 0px;
 }
-
+​
 .rating-label {
   font-size: 1em;
   display: inline;
 }
-
-.rating-container-1-5 input {
-  display: none;
-}
-
+​
 .rating-container-1-5 input + label {
   width: 3em;
   height: 3em;
@@ -215,19 +221,19 @@ select {
   border-radius: 2em;
   transition: background-color 0.3s;
 }
-
+​
 .rating-container-1-5 input:checked + label {
   background-color: var(--primary-color);
   color: #ffffff;
 }
-
+​
 .question-divider {
   width: 100%;
   height: 1.5px;
   margin: 0 0 15px 0;
   background-color: var(--grey-accent);
 }
-
+​
 button {
   background-color: var(--primary-color);
   color: white;
@@ -241,9 +247,34 @@ button {
   transition: 0.35s ease-in-out;
   border-radius: 2px;
 }
-
+​
 button:hover {
   color: var(--primary-color);
   background-color: white;
   border: 1.5px solid var(--primary-color);
+}
+​
+/* Mobile */
+@media (max-width: 680px) {
+  header {
+    display: flex;
+    width: calc(100% - 100px);
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    height: calc(85vh - 200px);
+    padding: 100px 50px;
+  }
+  #circle {
+    display: none;
+  }
+}
+​
+@keyframes rotate {
+  0% {
+    transform: translate(60vw, -25%) rotate(0deg);
+  }
+  100% {
+    transform: translate(60vw, -25%) rotate(-360deg);
+  }
 }

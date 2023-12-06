@@ -195,11 +195,7 @@ app.get('/adminLanding', (req, res) => {
         socialMediaPlatforms.forEach(platform => {
           if (req.body[`${platform}_hidden`]) {
             console.log(platform)
-            const socialMediaData = {
-              person_id: mentalHealthStatsId,
-              social_media_platform: platform,
-            };
-            return knex("socialmedia").insert(socialMediaData);
+            return knex("socialmedia").insert({person_id: mentalHealthStatsId, social_media_platform: platform});
           }
         });
       })

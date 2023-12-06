@@ -194,6 +194,7 @@ app.get('/adminLanding', (req, res) => {
         ];
         socialMediaPlatforms.forEach(platform => {
           if (req.body[`${platform}_hidden`]) {
+            console.log(platform)
             const socialMediaData = {
               person_id: mentalHealthStatsId,
               social_media_platform: platform,

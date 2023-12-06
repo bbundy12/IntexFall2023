@@ -189,7 +189,7 @@ app.get('/adminLanding', (req, res) => {
       .then(async (mentalHealthStatsIds) => {
         const mentalHealthStatsId = mentalHealthStatsIds[0].person_id;
         const socialMediaPlatforms = [
-          "instagram", "facebook", "Twitter", "Tiktok", "YouTube",
+          "Instagram", "Facebook", "Twitter", "Tiktok", "YouTube",
           "Discord", "Reddit", "Pinterest", "Snapchat"
         ];
         for (const platform of socialMediaPlatforms) {

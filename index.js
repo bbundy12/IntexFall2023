@@ -107,7 +107,7 @@ app.post('/updatePassword', (req, res) => {
             .update({ Password: newPassword })
             .then(() => {
                 // Password updated successfully, redirect to a success page
-                res.redirect('updatedPassword');
+                res.redirect('/updatedPassword');
             })
             .catch((error) => {
                 // Handle database update error (redirect to editUser with an error)
@@ -118,6 +118,10 @@ app.post('/updatePassword', (req, res) => {
         res.render('editUser', { error: 'An unexpected error occurred' });
     }
 });
+
+app.get('/updatedPassword', (req, res) => {
+    res.render('updatedPassword'); // Use the correct view file name
+  });
   
 
 

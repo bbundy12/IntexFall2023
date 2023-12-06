@@ -120,7 +120,11 @@ app.post('/updatePassword', (req, res) => {
 });
 
 app.get('/updatedPassword', (req, res) => {
-    res.render('updatedPassword'); // Use the correct view file name
+    res.render('updatedPassword');
+  });
+
+  app.get('/userLanding', (req, res) => {
+    res.render('userLanding');
   });
   
 

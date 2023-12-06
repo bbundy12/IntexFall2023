@@ -1,0 +1,29 @@
+body {
+    overflow-x: hidden;
+  }
+  
+  #circle {
+    position: absolute;
+    display: inline-block;
+    width: 110vh;
+    height: 110vh;
+    transform: translate(60vw, -25%) rotate(0deg);
+    border-radius: 50%;
+    fill: var(--secondary-dark);
+    animation: rotate 80s linear infinite;
+  }
+  
+  .svg-outer {
+    fill: var(--secondary-light);
+  }
+  
+  /* Circle Rotation Animation */
+  @keyframes rotate {
+    0% {
+      transform: translate(60vw, -25%) rotate(0deg);
+    }
+    100% {
+      transform: translate(60vw, -25%) rotate(-360deg);
+    }
+  }
+  

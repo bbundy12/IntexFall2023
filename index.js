@@ -154,8 +154,8 @@ app.get('/adminLanding', (req, res) => {
         hour12: false
     });
 
-    const handleNull = (value) => {
-        return value !== null ? value : false;
+    const handleNullOrUndefined = (value) => {
+        return value !== undefined && value !== null ? value : false;
       };
 
     knex("mentalhealthstats").insert({
@@ -165,11 +165,11 @@ app.get('/adminLanding', (req, res) => {
         gender: req.body.gender, 
         relationship_status: req.body.relationship_status, 
         occupation_status: req.body.occupation_status, 
-        affiliated_with_university: handleNull(req.body.university_hidden), 
-        affiliated_with_school: handleNull(req.body.school_hidden),
-        affiliated_with_private: handleNull(req.body.private_hidden), 
-        affiliated_with_company: handleNull(req.body.company_hidden), 
-        affiliated_with_government: handleNull(req.body.government_hidden),
+        affiliated_with_university: handleNullOrUndefined(req.body.university_hidden), 
+        affiliated_with_school: handleNullOrUndefined(req.body.school_hidden),
+        affiliated_with_private: handleNullOrUndefined(req.body.private_hidden), 
+        affiliated_with_company: handleNullOrUndefined(req.body.company_hidden), 
+        affiliated_with_government: handleNullOrUndefined(req.body.government_hidden),
         social_media_usage: req.body.social_media_usage, 
         average_time_on_social_media: req.body.average_social_media_time, 
         social_media_usage_without_purpose: req.body.question_9,

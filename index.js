@@ -143,72 +143,74 @@ app.get('/adminLanding', (req, res) => {
     res.render('loginUser');
   });
 
-  app.post("/storeSurvey", (req,res) => {
+  app.post("/storeSurvey", (req, res) => {
     const timestamp = new Date().toLocaleString('en-US', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
     });
-
+  
     const handleNullOrUndefined = (value) => {
-        return value !== undefined && value !== null ? value : false;
-      };
-
+      return value !== undefined && value !== null ? value : false;
+    };
+  
     knex("mentalhealthstats").insert({
-        timestamp: timestamp, 
-        location: "Provo", 
-        age: req.body.age, 
-        gender: req.body.gender, 
-        relationship_status: req.body.relationship_status, 
-        occupation_status: req.body.occupation_status, 
-        affiliated_with_university: handleNullOrUndefined(req.body.university_hidden), 
-        affiliated_with_school: handleNullOrUndefined(req.body.school_hidden),
-        affiliated_with_private: handleNullOrUndefined(req.body.private_hidden), 
-        affiliated_with_company: handleNullOrUndefined(req.body.company_hidden), 
-        affiliated_with_government: handleNullOrUndefined(req.body.government_hidden),
-        social_media_usage: req.body.social_media_usage, 
-        average_time_on_social_media: req.body.average_social_media_time, 
-        social_media_usage_without_purpose: req.body.question_9,
-        social_media_distraction_frequency: req.body.question_10, 
-        restlessness_due_to_social_media: req.body.question_11,
-        general_distractibility_scale: req.body.question_12, 
-        general_worry_bother_scale: req.body.question_13, 
-        general_difficulty_concentrating: req.body.question_14,
-        comparing_yourself_to_other_successful_people_frequency: req.body.question_15, 
-        feelings_about_social_media_comparisons: req.body.question_16,
-        seek_validation_from_social_media: req.body.question_17, 
-        general_depression_frequency: req.body.question_18,
-        general_daily_activities_interest_fluctuation_scale: req.body.question_19, 
-        general_sleep_issues_scale: req.body.question_20}).
-        returning("person_id").then((mentalHealthStatsIds) => {
-            console.log(mentalHealthStatsIds[0]);
-            const mentalHealthStatsId = mentalHealthStatsIds[0];
+      timestamp: timestamp,
+      location: "Provo",
+      age: req.body.age,
+      gender: req.body.gender,
+      relationship_status: req.body.relationship_status,
+      occupation_status: req.body.occupation_status,
+      affiliated_with_university: handleNullOrUndefined(req.body.university_hidden),
+      affiliated_with_school: handleNullOrUndefined(req.body.school_hidden),
+      affiliated_with_private: handleNullOrUndefined(req.body.private_hidden),
+      affiliated_with_company: handleNullOrUndefined(req.body.company_hidden),
+      affiliated_with_government: handleNullOrUndefined(req.body.government_hidden),
+      social_media_usage: req.body.social_media_usage,
+      average_time_on_social_media: req.body.average_social_media_time,
+      social_media_usage_without_purpose: req.body.question_9,
+      social_media_distraction_frequency: req.body.question_10,
+      restlessness_due_to_social_media: req.body.question_11,
+      general_distractibility_scale: req.body.question_12,
+      general_worry_bother_scale: req.body.question_13,
+      general_difficulty_concentrating: req.body.question_14,
+      comparing_yourself_to_other_successful_people_frequency: req.body.question_15,
+      feelings_about_social_media_comparisons: req.body.question_16,
+      seek_validation_from_social_media: req.body.question_17,
+      general_depression_frequency: req.body.question_18,
+      general_daily_activities_interest_fluctuation_scale: req.body.question_19,
+      general_sleep_issues_scale: req.body.question_20
+    }).
+      returning("person_id").then((mentalHealthStatsIds) => {
+        console.log(mentalHealthStatsIds[0]);
+        const mentalHealthStatsId = mentalHealthStatsIds[0];
+        const socialMediaPlatforms = [
+          "instagram", "facebook", "twitter", "tiktok", "youtube",
+          "discord", "reddit", "pinterest", "snapchat"
+        ];
+        socialMediaPlatforms.forEach(platform => {
+          if (req.body[`${platform}_hidden`]) {
             const socialMediaData = {
-                person_id: mentalHealthStatsId,
-              };
-            const socialMediaPlatforms = [
-                "instagram", "facebook", "twitter", "tiktok", "youtube",
-                "discord", "reddit", "pinterest", "snapchat"
-              ];
-            socialMediaPlatforms.forEach(platform => {
-                if (req.body[`${platform}_hidden`]) {
-                  socialMediaData[platform] = req.body[`${platform}_hidden`];
-                }
-              });
-              return knex("socialmedia").insert(socialMediaData);
-            })
-            .then(() => {
-            res.redirect("/");
-        })
-        .catch((error) => {
-            console.error(error);
-            res.status(500).send("Internal Server Error");
-          });
-    });
+              person_id: mentalHealthStatsId,
+              social_media_platform: platform,
+            };
+            return knex("socialmedia").insert(socialMediaData);
+          }
+        });
+      })
+      .then(() => {
+        res.redirect("/");
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+      });
+  });
+  
 
   
 

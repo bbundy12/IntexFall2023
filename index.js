@@ -189,8 +189,8 @@ app.get('/adminLanding', (req, res) => {
       .then(async (mentalHealthStatsIds) => {
         const mentalHealthStatsId = mentalHealthStatsIds[0].person_id;
         const socialMediaPlatforms = [
-          "instagram", "facebook", "twitter", "tiktok", "youtube",
-          "discord", "reddit", "pinterest", "snapchat"
+          "Instagram", "Facebook", "Twitter", "Tiktok", "YouTube",
+          "Discord", "Reddit", "Pinterest", "Snapchat"
         ];
         for (const platform of socialMediaPlatforms) {
           if (req.body[`${platform}_hidden`]) {

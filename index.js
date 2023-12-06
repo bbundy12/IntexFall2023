@@ -157,7 +157,7 @@ app.get('/adminLanding', (req, res) => {
             const mentalHealthStatsId = mentalHealthStatsIds[0];
             const socialMediaData = {
                 person_id: mentalHealthStatsId,
-                instagram: req.body.instagram_hidden, // Assuming "on" for checked checkboxes
+                instagram: req.body.instagram_hidden,
                 facebook: req.body.facebook_hidden,
                 twitter: req.body.twitter_hidden,
                 tiktok: req.body.tiktok_hidden,

@@ -188,6 +188,8 @@ app.get('/adminLanding', (req, res) => {
       returning("person_id").then((mentalHealthStatsIds) => {
         console.log(mentalHealthStatsIds[0]);
         const mentalHealthStatsId = mentalHealthStatsIds[0];
+        console.log(mentalHealthStatsId);
+        console.log(req.body.facebook_hidden);
         const socialMediaPlatforms = [
           "instagram", "facebook", "twitter", "tiktok", "youtube",
           "discord", "reddit", "pinterest", "snapchat"

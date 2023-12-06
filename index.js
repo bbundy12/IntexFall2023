@@ -144,6 +144,15 @@ app.get('/adminLanding', (req, res) => {
   });
 
   app.post("/storeSurvey", (req,res) => {
+    const timestamp = new Date().toLocaleString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    });
     knex("mentalhealthstats").insert({timestamp: timestamp, location: "Provo", age: req.body.age, gender: req.body.gender, 
         relationship_status: req.body.relationship_status, occupation_status: req.body.occupation_status, affiliated_with_university: req.body.university_hidden, affiliated_with_school: req.body.school_hidden,
         affiliated_with_private: req.body.private_hidden, affiliated_with_company: req.body.company_hidden, affiliated_with_government: req.body.government_hidden,

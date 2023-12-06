@@ -65,10 +65,14 @@ app.post('/login', async (req, res) => {
 
         console.log('Number of results:', users.length);
 
-        if (users.length == 1) {
+        if (users.length == 1 && users[0].Username === 'Admin' && users[0].Password === 'Admin') {
             // If at least one user is found, you can redirect to a different route or render a page
             res.redirect('/createUser');
-        } else {
+        } 
+        else if (users.length === 1) {
+            res.redirect('/userLanding')
+        }
+        else {
             // If no user is found, you can render the login page with an error message
             res.render('loginUser', { error: 'Invalid username or password' });
         }
@@ -123,7 +127,7 @@ app.get('/updatedPassword', (req, res) => {
     res.render('updatedPassword');
   });
 
-  app.get('/userLanding', (req, res) => {
+app.get('/userLanding', (req, res) => {
     res.render('userLanding');
   });
   

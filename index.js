@@ -166,16 +166,16 @@ app.get('/adminLanding', (req, res) => {
             const mentalHealthStatsId = mentalHealthStatsIds[0];
             const socialMediaData = {
                 person_id: mentalHealthStatsId,
-                instagram: req.body.instagram_hidden,
-                facebook: req.body.facebook_hidden,
-                twitter: req.body.twitter_hidden,
-                tiktok: req.body.tiktok_hidden,
-                youtube: req.body.youtube_hidden,
-                discord: req.body.discord_hidden,
-                reddit: req.body.reddit_hidden,
-                pinterest: req.body.pinterest_hidden,
-                snapchat: req.body.snapchat_hidden,
               };
+            const socialMediaPlatforms = [
+                "instagram", "facebook", "twitter", "tiktok", "youtube",
+                "discord", "reddit", "pinterest", "snapchat"
+              ];
+            socialMediaPlatforms.forEach(platform => {
+                if (req.body[`${platform}_hidden`]) {
+                  socialMediaData[platform] = req.body[`${platform}_hidden`];
+                }
+              });
               return knex("socialmedia").insert(socialMediaData);
             })
             .then(() => {

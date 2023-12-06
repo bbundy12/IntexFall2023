@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit User</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/form_styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Start of Form -->
+  <form id="editUserForm" action="/updatePassword" method="post" onsubmit="return validateForm()">
+    <h2>Edit User</h2>
+
+    <!-- Hidden Input for LocalStorage Username -->
+    <input type="hidden" name="localStorageUsername" id="localStorageUsername" value="<%= localStorage.getItem('username') %>">
+
+    <!-- Edit User Input -->
+    <label for="currentPassword">Current Password</label>
+    <input id="currentPassword" name="currentPassword" type="password" required>
+
+    <label for="newPassword">New Password</label>
+    <input id="newPassword" name="newPassword" type="password" required>
+
+    <label for="confirmNewPassword">Confirm New Password</label>
+    <input id="confirmNewPassword" name="confirmNewPassword" type="password" required>
+
+    <!-- Error Message -->
+    <p id="error-message" style="color: red; font-style: italic; display: none;">Passwords do not match.</p>
+
+    <!-- Edit User Submit -->
+    <button type="submit">Update Password</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      // Get values from password fields
+      var newPassword = document.getElementById('newPassword').value;
+      var confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+      // Check if passwords match
+      if (newPassword !== confirmNewPassword) {
+        // Display error message
+        document.getElementById('error-message').style.display = 'block';
+        return false; // Prevent form submission
+      }
+
+      // Hide error message if passwords match
+      document.getElementById('error-message').style.display = 'none';
+      return true; // Allow form submission
+    }
+  </script>
+
+</body>
+
+</html>

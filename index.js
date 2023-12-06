@@ -89,6 +89,37 @@ app.post("/storeUser", (req, res) => {
         });
 });
 
+app.get('/editUser', (req, res) => {
+    res.render('editUser');
+  });
+
+app.post('/updatePassword', (req, res) => {
+    try {
+        // Retrieve data from the form submission
+        const currentPassword = req.body.currentPassword;
+        const newPassword = req.body.newPassword;
+        const confirmNewPassword = req.body.confirmNewPassword;
+        const localStorageUsername = req.body.localStorageUsername;
+
+        // Update the password in the database
+        knex('users')
+            .where('Username', localStorageUsername)
+            .update({ Password: newPassword })
+            .then(() => {
+                // Password updated successfully, redirect to a success page
+                res.redirect('/passwordUpdated');
+            })
+            .catch((error) => {
+                // Handle database update error (redirect to editUser with an error)
+                res.render('editUser', { error: 'Error updating password' });
+            });
+    } catch (error) {
+        // Handle other errors (redirect to editUser with a generic error)
+        res.render('editUser', { error: 'An unexpected error occurred' });
+    }
+});
+  
+
 
 app.listen(port, () => console.log("Express App has started and server is listening!"));            
         

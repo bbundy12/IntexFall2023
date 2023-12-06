@@ -163,6 +163,7 @@ app.get('/adminLanding', (req, res) => {
         seek_validation_from_social_media: req.body.question_17, general_depression_frequency: req.body.question_18,
         general_daily_activities_interest_fluctuation_scale: req.body.question_19, general_sleep_issues_scale: req.body.question_20}).
         returning("person_id").then((mentalHealthStatsIds) => {
+            console.log(mentalHealthStatsIds[0]);
             const mentalHealthStatsId = mentalHealthStatsIds[0];
             const socialMediaData = {
                 person_id: mentalHealthStatsId,

@@ -83,15 +83,25 @@ app.post('/login', async (req, res) => {
 });
   
 
-app.post("/storeUser", (req, res) => {
-    knex("users").insert({ Username: req.body.username, Password: req.body.password })
-        .then(() => {
-            res.redirect("accountCreated");
-        })
-        .catch((err) => {
-            console.error('Error storing user:', err);
-            res.status(500).json({ error: 'Internal Server Error' });
-        });
+app.post("/storeUser", async (req, res) => {
+  try {
+    // Check if the new username already exists
+    const existingUser = await knex("users")
+      .where("Username", req.body.username)
+      .select('Username');
+
+    if (existingUser) {
+      // If the username already exists, display an error
+      res.status(400).json({ error: "Username Already Taken" });
+    } else {
+      // If the username is not taken, insert the new user
+      await knex("users").insert({ Username: req.body.username, Password: req.body.password });
+      res.redirect("accountCreated");
+    }
+  } catch (err) {
+    console.error('Error storing user:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 app.get('/editUser', (req, res) => {
@@ -288,6 +298,10 @@ app.get('/viewData', async (req, res) => {
 
   app.get('/logout', (req, res) => {
     res.render('logoutSuccessful');
+  })
+
+  app.get('/accountCreated', (req, res) => {
+    res.render('accountCreated');
   })
   
   

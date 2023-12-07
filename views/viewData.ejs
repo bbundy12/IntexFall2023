@@ -17,22 +17,60 @@
       <th>Timestamp</th>
       <th>Location</th>
       <th>Age</th>
-      <!-- Add more columns as needed -->
-
-      <!-- Display Social Media Platforms Used column -->
+      <th>Gender</th>
+      <th>Relationship Status</th>
+      <th>Occupation Status</th>
+      <th>Affiliated with University</th>
+      <th>Affiliated with School</th>
+      <th>Affiliated with Private</th>
+      <th>Affiliated with Company</th>
+      <th>Affiliated with Government</th>
+      <th>Social Media Usage</th>
       <th>Social Media Platforms Used</th>
+      <th>Average Time on Social Media</th>
+      <th>Social Media Usage Without Purpose</th>
+      <th>Social Media Distraction Frequency</th>
+      <th>Restlessness Due to Social Media</th>
+      <th>General Distractibility Scale</th>
+      <th>General Worry Bother Scale</th>
+      <th>General Difficulty Concentrating</th>
+      <th>Comparing Yourself to Other Successful People Frequency</th>
+      <th>Feelings About Social Media Comparisons</th>
+      <th>Seek Validation from Social Media</th>
+      <th>General Depression Frequency</th>
+      <th>General Daily Activities Interest Fluctuation Scale</th>
+      <th>General Sleep Issues Scale</th>
     </tr>
 
     <% for (let i = 0; i < data.length; i++) { %>
       <tr>
         <!-- Display Mental Health Stats data -->
-        <td><%= data[i].timestamp %></td>
+        <td><%= new Date(data[i].timestamp).toLocaleString() %></td>
         <td><%= data[i].location %></td>
         <td><%= data[i].age %></td>
-        <!-- Add more columns as needed -->
-
-        <!-- Display Social Media Platforms Used data -->
+        <td><%= data[i].gender %></td>
+        <td><%= data[i].relationship_status %></td>
+        <td><%= data[i].occupation_status %></td>
+        <td><%= data[i].affiliated_with_university %></td>
+        <td><%= data[i].affiliated_with_school %></td>
+        <td><%= data[i].affiliated_with_private %></td>
+        <td><%= data[i].affiliated_with_company %></td>
+        <td><%= data[i].affiliated_with_government %></td>
+        <td><%= data[i].social_media_usage %></td>
         <td><%= data[i].social_media_platforms_used.join(', ') %></td>
+        <td><%= data[i].average_time_on_social_media %></td>
+        <td><%= data[i].social_media_usage_without_purpose %></td>
+        <td><%= data[i].social_media_distraction_frequency %></td>
+        <td><%= data[i].restlessness_due_to_social_media %></td>
+        <td><%= data[i].general_distractibility_scale %></td>
+        <td><%= data[i].general_worry_bother_scale %></td>
+        <td><%= data[i].general_difficulty_concentrating %></td>
+        <td><%= data[i].comparing_yourself_to_other_successful_people_frequency %></td>
+        <td><%= data[i].feelings_about_social_media_comparisons %></td>
+        <td><%= data[i].seek_validation_from_social_media %></td>
+        <td><%= data[i].general_depression_frequency %></td>
+        <td><%= data[i].general_daily_activities_interest_fluctuation_scale %></td>
+        <td><%= data[i].general_sleep_issues_scale %></td>
       </tr>
     <% } %>
   </table>

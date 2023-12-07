@@ -90,7 +90,7 @@ app.post("/storeUser", async (req, res) => {
       .where("Username", req.body.username)
       .select('Username');
 
-    if (existingUser) {
+    if (existingUser.length > 0) {
       // If the username already exists, display an error
       res.status(400).json({ error: "Username Already Taken" });
     } else {
@@ -103,6 +103,7 @@ app.post("/storeUser", async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 app.get('/editUser', (req, res) => {
     res.render('editUser');

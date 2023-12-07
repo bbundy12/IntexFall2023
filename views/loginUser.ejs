@@ -44,6 +44,9 @@
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
   
+      console.log('Client Side - Username:', username);
+      console.log('Client Side - Password:', password);
+  
       try {
         // Send a POST request to the server to validate the credentials
         const response = await fetch('/login', {
@@ -52,8 +55,8 @@
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            Username: username,
-            Password: password,
+            username: username,
+            password: password,
           }),
         });
   

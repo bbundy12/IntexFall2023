@@ -60,6 +60,9 @@ app.get("/createUser", (req,res) => {
 
 app.post('/login', async (req, res) => {
     try {
+      console.log('Server Side - Username:', req.body.username);
+      console.log('Server Side - Password:', req.body.password);
+  
       // Check if the username and password match a user in the database
       const users = await knex
         .select('Username', 'Password')
@@ -84,6 +87,7 @@ app.post('/login', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+  
 
 app.post("/storeUser", (req, res) => {
     knex("users").insert({ Username: req.body.username, Password: req.body.password })

@@ -122,3 +122,34 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #eaeaea;
 }
+
+@media only screen and (max-width: 680px) {
+  body {
+    background-color: white;
+    font-size: 12px;
+  }
+
+  #table-filter-container h2 {
+    margin: 0 0 40px 0;
+  }
+
+  #table-filter-container {
+    padding: 25px;
+  }
+
+  form {
+    width: calc(100%);
+    flex-direction: column;
+  }
+
+  #input-container {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #table-container {
+    width: calc(100vw - 50px);
+    margin: 0 25px;
+    overflow-x: scroll;
+  }
+}

@@ -40,7 +40,7 @@
     <p><small>Signed in as:</small>User</p>
     <div id="links">
       <a href="/editUser">Edit Account Info</a>
-      <a href="/logout" onclick="clearlocal()">Log Out</a>
+      <a href="/logout">Log Out</a>
     </div>
   </nav>
 
@@ -94,13 +94,6 @@
       prevMatch = currentMatch;
     }
     window.addEventListener('resize', checkMediaQuery);
-  </script>
-  
-  <script>
-    function clearLocal() {
-      // Clear local storage for username and password
-      localStorage.removeItem('username');
-    }
   </script>
 
   <!-- Footer -->

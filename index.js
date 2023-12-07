@@ -287,7 +287,7 @@ app.get('/viewData', async (req, res) => {
   
 
   app.get('/logout', (req, res) => {
-    res.render('index');
+    res.render('logoutSuccessful');
   })
   
   

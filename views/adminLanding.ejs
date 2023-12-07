@@ -31,13 +31,6 @@
   </script>
 </head>
 
-<script>
-  function clearLocal() {
-    // Clear local storage for username and password
-    localStorage.removeItem('username');
-  }
-</script>
-
 <body>
   <div id="body-content">
     <!-- Navbar -->
@@ -46,7 +39,7 @@
       <div id="links">
         <a href="/createUser">Create User</a>
         <a href="/editUser">Edit Account Info</a>
-        <a href="/logout" onclick="clearlocal()">Log Out</a>
+        <a href="/logout">Log Out</a>
       </div>
     </nav>
 

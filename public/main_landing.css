@@ -165,6 +165,10 @@ main {
   header {
     width: calc(100vw - 100px);
     padding: 0px 50px;
+    align-items: center;
+  }
+  header * {
+    text-align: center;
   }
 
   #circle {

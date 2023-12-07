@@ -56,6 +56,10 @@ select {
   font-size: 1em;
 }
 
+input[type="number"]:focus {
+  outline-color: var(--primary-color);
+}
+
 .radioSelector {
   display: flex;
   width: 100%;

@@ -31,6 +31,11 @@ nav p small {
   margin: 0 15px;
 }
 
+#links {
+  display: flex;
+  gap: 20px;
+}
+
 nav a {
   color: white;
   background-color: var(--secondary-dark);

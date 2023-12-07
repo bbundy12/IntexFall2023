@@ -21,7 +21,8 @@ label,
 input,
 select,
 button,
-.radioSelector div {
+.radioSelector div,
+table {
   font-family: "Poppins", sans-serif;
 }
 

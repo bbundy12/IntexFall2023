@@ -143,6 +143,14 @@ app.get('/adminLanding', (req, res) => {
     res.render('loginUser');
   });
 
+  app.get('/dashboard', (req, res) => {
+    res.render('dashboard');
+  });
+
+  app.get('/surveySubmitted', (req, res) => {
+    res.render('surveySubmitted');
+  })
+
   app.post("/storeSurvey", (req, res) => {
     const timestamp = new Date().toLocaleString('en-US', {
       year: 'numeric',
@@ -268,6 +276,8 @@ app.get('/viewData', async (req, res) => {
       res.status(500).send('Internal Server Error');
     }
   });
+
+
   
   
 app.listen(port, () => console.log("Express App has started and server is listening!"));

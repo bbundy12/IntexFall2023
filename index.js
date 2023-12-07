@@ -218,7 +218,7 @@ app.get('/adminLanding', (req, res) => {
 app.get('/viewData', async (req, res) => {
     try {
       // Fetch data from mentalhealthstats and socialmedia tables
-      const data = await knex
+      let query = knex
         .select(
           'mentalhealthstats.timestamp',
           'mentalhealthstats.location',
@@ -251,8 +251,16 @@ app.get('/viewData', async (req, res) => {
         .leftJoin('socialmedia', 'mentalhealthstats.person_id', '=', 'socialmedia.person_id')
         .groupBy('mentalhealthstats.person_id');
   
+      // Apply location filter if selected in the form
+      if (req.query.location) {
+        query = query.where('mentalhealthstats.location', req.query.location);
+      }
+  
+      // Execute the query
+      const data = await query;
+  
       // Render the viewData.ejs file with the fetched data
-      res.render('viewData', { data });
+      res.render('viewData', { data, selectedLocation: req.query.location });
     } catch (error) {
       console.error('Error fetching data:', error);
       res.status(500).send('Internal Server Error');

@@ -11,6 +11,18 @@
 <body>
   <h1>Mental Health Stats Data</h1>
 
+  <form action="/viewData" method="get">
+    <label for="locationFilter">Filter by Location:</label>
+    <select id="locationFilter" name="location">
+      <!-- Populate dropdown with unique locations from the data -->
+      <% const uniqueLocations = [...new Set(data.map(item => item.location))] %>
+      <% for (let location of uniqueLocations) { %>
+        <option value="<%= location %>"><%= location %></option>
+      <% } %>
+    </select>
+    <button type="submit">Apply Filter</button>
+  </form>
+
   <table border="1">
     <tr>
       <!-- Display Mental Health Stats columns -->

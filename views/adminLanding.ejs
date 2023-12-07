@@ -23,6 +23,9 @@
       if (storedUsername !== 'Admin' || storedUsername === null) {
         // Redirect to a different page if the username is not "Admin"
         window.location.href = '/unauthorized';
+      } else {
+        // Show the content if the user is authorized
+        document.getElementById('body-content').style.display = 'block';
       }
     });
   </script>
@@ -36,7 +39,7 @@
 </script>
 
 <body>
-  <div id="hide-unauthorized">
+  <div id="body-content">
     <!-- Navbar -->
     <nav>
       <p><small>Signed in as:</small>Admin</p>

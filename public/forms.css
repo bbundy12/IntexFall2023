@@ -214,4 +214,11 @@ form button:hover {
   form button {
     width: 80vw;
   }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="password"],
+  select {
+    font-size: 1.5em;
+  }
 }

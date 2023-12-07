@@ -17,7 +17,7 @@
 
   <!-- clears local storage when login page loads -->
   <script>
-    window.addEventListener('beforeunload', function () {
+    window.addEventListener('DOMContentLoaded', function () {
       // Clear local storage for username and password
       localStorage.removeItem('username');
     });

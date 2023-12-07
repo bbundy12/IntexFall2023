@@ -17,7 +17,7 @@
 
   <!-- Prevent admins from using this page -->
   <script>
-  document.addEventListener('beforeunload', function () {
+  document.addEventListener('DOMContentLoaded', function () {
     // Check if localStorage username is "Admin"
     const storedUsername = localStorage.getItem('username');
 

@@ -32,7 +32,7 @@ nav a:hover {
 
 header {
   display: flex;
-  width: calc(60% - 120px);
+  width: calc(60vw - 120px);
   flex-direction: column;
   align-items: baseline;
   justify-content: center;
@@ -93,10 +93,12 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
 }
 
 .landing-section {
-  width: 40%;
+  width: calc(45vw - 100px);
+  min-width: 375px;
   margin: 50px 0 20px 0;
   padding: 35px 50px 50px 50px;
   border-radius: 10px;
@@ -157,7 +159,7 @@ main {
 /* Mobile */
 @media only screen and (max-width: 680px) {
   header {
-    width: calc(100% - 100px);
+    width: calc(100vw - 100px);
     padding: 0px 50px;
   }
 
@@ -177,11 +179,23 @@ main {
   }
 
   .landing-section {
-    width: 60%;
+    width: calc(85vw - 100px);
+    min-width: auto;
+    margin: 50px 0 20px 0;
+    padding: 35px 50px 50px 50px;
   }
 
   footer {
-    width: calc(100% - 100px);
+    width: calc(100vw - 100px);
     margin: 50px 0 0 0;
+    padding: 0 50px;
+  }
+
+  footer :last-child {
+    text-align: right;
+  }
+
+  footer :first-child {
+    text-align: left;
   }
 }

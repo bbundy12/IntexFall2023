@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Data</title>
+</head>
+
+<body>
+  <h1>Mental Health Stats Data</h1>
+
+  <table border="1">
+    <tr>
+      <!-- Display Mental Health Stats columns -->
+      <th>Timestamp</th>
+      <th>Location</th>
+      <th>Age</th>
+      <!-- Add more columns as needed -->
+
+      <!-- Display Social Media Platforms Used column -->
+      <th>Social Media Platforms Used</th>
+    </tr>
+
+    <% for (let i = 0; i < data.length; i++) { %>
+      <tr>
+        <!-- Display Mental Health Stats data -->
+        <td><%= data[i].timestamp %></td>
+        <td><%= data[i].location %></td>
+        <td><%= data[i].age %></td>
+        <!-- Add more columns as needed -->
+
+        <!-- Display Social Media Platforms Used data -->
+        <td><%= data[i].social_media_platforms_used.join(', ') %></td>
+      </tr>
+    <% } %>
+  </table>
+</body>
+
+</html>

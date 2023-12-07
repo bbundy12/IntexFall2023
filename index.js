@@ -214,9 +214,25 @@ app.get('/adminLanding', (req, res) => {
         res.status(500).send("Internal Server Error");
     })
 });
+
+app.get('/viewData', async (req, res) => {
+    try {
+      // Fetch data from mentalhealthstats and socialmedia tables
+      const data = await knex
+        .select(
+          'mentalhealthstats.*',
+          knex.raw('array_agg(socialmedia.social_media_platform) as social_media_platforms_used')
+        )
+        .from('mentalhealthstats')
+        .leftJoin('socialmedia', 'mentalhealthstats.person_id', '=', 'socialmedia.person_id')
+        .groupBy('mentalhealthstats.person_id');
   
-
+      // Render the viewData.ejs file with the fetched data
+      res.render('viewData', { data });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
   
-
-
 app.listen(port, () => console.log("Express App has started and server is listening!"));

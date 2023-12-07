@@ -228,6 +228,7 @@ app.get('/viewData', async (req, res) => {
       // Fetch data from mentalhealthstats and socialmedia tables
       let query = knex
         .select(
+          'mentalhealthstats.person_id',  
           'mentalhealthstats.timestamp',
           'mentalhealthstats.location',
           'mentalhealthstats.age',

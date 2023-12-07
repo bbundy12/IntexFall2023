@@ -39,20 +39,44 @@
   </form>
 
   <script>
-    document.getElementById('loginForm').addEventListener('submit', function (event) {
+    document.getElementById('loginForm').addEventListener('submit', async function (event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+  
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
-
-      // Check if the credentials are "Admin" for both username and password
-      if (username === 'Admin' && password === 'Admin') {
-        // Store username and password in local storage
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
-      }
-      else {
-        // Store username and password in local storage
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
+  
+      try {
+        // Send a POST request to the server to validate the credentials
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: username,
+            password: password,
+          }),
+        });
+  
+        const result = await response.json();
+  
+        if (response.ok) {
+          // Successful login attempt
+          // Store only the username in local storage
+          localStorage.setItem('username', username);
+  
+          // Redirect to the appropriate landing page based on the server response
+          window.location.href = result.redirectURL;
+        } else {
+          // Unsuccessful login attempt
+          // Clear any existing username from local storage
+          localStorage.removeItem('username');
+  
+          // Render the login page with an error message
+          document.getElementById('error-message').textContent = result.error;
+        }
+      } catch (error) {
+        console.error('Error during login:', error);
       }
     });
   </script>

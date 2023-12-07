@@ -60,33 +60,27 @@ app.get("/createUser", (req,res) => {
 
 app.post('/login', async (req, res) => {
     try {
-      console.log('Server Side - Username:', req.body.Username);
-      console.log('Server Side - Password:', req.body.Password);
-  
-      // Check if the username and password match a user in the database
-      const users = await knex
-        .select('Username', 'Password')
-        .from('users')
-        .where('Username', req.body.Username)
-        .andWhere('Password', req.body.Password);
-  
-      console.log('Number of results:', users.length);
-  
-      if (users.length === 1 && users[0].Username === 'Admin') {
-        // If at least one user is found and is the admin, redirect to the admin landing page
-        res.json({ redirectURL: '/adminLanding' });
-      } else if (users.length === 1) {
-        // If a regular user is found, redirect to the user landing page
-        res.json({ redirectURL: '/userLanding' });
-      } else {
-        // If no user is found, respond with an error
-        res.status(401).json({ error: 'Invalid username or password' });
-      }
+        // Check if the username and password match a user in the database
+        const users = await knex.select('Username', 'Password').from('users').where('Username', req.body.username).andWhere('Password', req.body.password);
+
+        console.log('Number of results:', users.length);
+
+        if (users.length == 1 && users[0].Username === 'Admin' && users[0].Password === 'Admin') {
+            // If at least one user is found, you can redirect to a different route or render a page
+            res.redirect('/adminLanding');
+        } 
+        else if (users.length === 1) {
+            res.redirect('/userLanding')
+        }
+        else {
+            // If no user is found, you can render the login page with an error message
+            res.render('loginUser', { error: 'Invalid username or password' });
+        }
     } catch (err) {
-      console.error('Error logging in:', err);
-      res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error logging in:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
+});
   
 
 app.post("/storeUser", (req, res) => {
@@ -285,7 +279,9 @@ app.get('/viewData', async (req, res) => {
     }
   });
 
-
+  app.get('/logout', (req, res) => {
+    res.render('index');
+  })
   
   
 app.listen(port, () => console.log("Express App has started and server is listening!"));

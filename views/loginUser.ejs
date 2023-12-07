@@ -14,6 +14,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- clears local storage when login page loads -->
+  <script>
+    window.addEventListener('beforeunload', function () {
+      // Clear local storage for username and password
+      localStorage.removeItem('username');
+      localStorage.removeItem('password');
+    });
+  </script>
+
 </head>
 
 <body>
@@ -39,46 +49,19 @@
   </form>
 
   <script>
-    document.getElementById('loginForm').addEventListener('submit', async function (event) {
-      event.preventDefault();
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
-  
-      console.log('Client Side - Username:', username);
-      console.log('Client Side - Password:', password);
-  
-      try {
-        // Send a POST request to the server to validate the credentials
-        const response = await fetch('/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            Username: username,
-            Uassword: password,
-          }),
-        });
-  
-        const result = await response.json();
-  
-        if (response.ok) {
-          // Successful login attempt
-          // Store only the username in local storage
-          localStorage.setItem('username', username);
-  
-          // Redirect to the appropriate landing page based on the server response
-          window.location.href = result.redirectURL;
-        } else {
-          // Unsuccessful login attempt
-          // Clear any existing username from local storage
-          localStorage.removeItem('username');
-  
-          // Render the login page with an error message
-          document.getElementById('error-message').textContent = result.error;
-        }
-      } catch (error) {
-        console.error('Error during login:', error);
+
+      // Check if the credentials are "Admin" for both username and password
+      if (username === 'Admin' && password === 'Admin') {
+        // Store username and password in local storage
+        localStorage.setItem('username', username);
+      }
+      else {
+        // Store username and password in local storage
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
       }
     });
   </script>

@@ -220,7 +220,31 @@ app.get('/viewData', async (req, res) => {
       // Fetch data from mentalhealthstats and socialmedia tables
       const data = await knex
         .select(
-          'mentalhealthstats.*',
+          'mentalhealthstats.timestamp',
+          'mentalhealthstats.location',
+          'mentalhealthstats.age',
+          'mentalhealthstats.gender',
+          'mentalhealthstats.relationship_status',
+          'mentalhealthstats.occupation_status',
+          'mentalhealthstats.affiliated_with_university',
+          'mentalhealthstats.affiliated_with_school',
+          'mentalhealthstats.affiliated_with_private',
+          'mentalhealthstats.affiliated_with_company',
+          'mentalhealthstats.affiliated_with_government',
+          'mentalhealthstats.social_media_usage',
+          'mentalhealthstats.average_time_on_social_media',
+          'mentalhealthstats.social_media_usage_without_purpose',
+          'mentalhealthstats.social_media_distraction_frequency',
+          'mentalhealthstats.restlessness_due_to_social_media',
+          'mentalhealthstats.general_distractibility_scale',
+          'mentalhealthstats.general_worry_bother_scale',
+          'mentalhealthstats.general_difficulty_concentrating',
+          'mentalhealthstats.comparing_yourself_to_other_successful_people_frequency',
+          'mentalhealthstats.feelings_about_social_media_comparisons',
+          'mentalhealthstats.seek_validation_from_social_media',
+          'mentalhealthstats.general_depression_frequency',
+          'mentalhealthstats.general_daily_activities_interest_fluctuation_scale',
+          'mentalhealthstats.general_sleep_issues_scale',
           knex.raw('array_agg(socialmedia.social_media_platform) as social_media_platforms_used')
         )
         .from('mentalhealthstats')

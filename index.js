@@ -67,8 +67,8 @@ app.post('/login', async (req, res) => {
       const users = await knex
         .select('Username', 'Password')
         .from('users')
-        .where('Username', req.body.username)
-        .andWhere('Password', req.body.password);
+        .where('Username', req.body.Username)
+        .andWhere('Password', req.body.Password);
   
       console.log('Number of results:', users.length);
   

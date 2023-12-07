@@ -207,7 +207,7 @@ app.get('/adminLanding', (req, res) => {
         }
       })
       .then(() => {
-        res.redirect("/");
+        res.redirect("/surveySubmitted");
       })
       .catch((error) => {
         console.error("Error in transaction:", error);

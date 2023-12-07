@@ -55,7 +55,7 @@
     <input id="confirmNewPassword" name="confirmNewPassword" type="password" required>
 
     <!-- Error Message -->
-    <p id="error-message">Passwords do not match.</p>
+    <p id="error-message"></p>
 
     <!-- Edit User Submit -->
     <button type="submit">Update Password</button>
@@ -69,10 +69,20 @@
       // Get values from password fields
       var newPassword = document.getElementById('newPassword').value;
       var confirmNewPassword = document.getElementById('confirmNewPassword').value;
+      var enteredUsername = document.getElementById('username').value;
+      var storedUsername = localStorage.getItem('username');
+
+      if (storedUsername !== enteredUsername) {
+        // Display error message
+        document.getElementById('error-message').innerText = 'Enter Your Username.';
+        document.getElementById('error-message').style.display = 'block';
+        return false; // Prevent form submission
+      }
 
       // Check if passwords match
       if (newPassword !== confirmNewPassword) {
         // Display error message
+        document.getElementById('error-message').innerText = 'Passwords do not match.';
         document.getElementById('error-message').style.display = 'block';
         return false; // Prevent form submission
       }

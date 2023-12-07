@@ -252,19 +252,21 @@ app.get('/viewData', async (req, res) => {
         .groupBy('mentalhealthstats.person_id');
   
       // Apply location filter if selected in the form
-      if (req.query.location) {
-        query = query.where('mentalhealthstats.location', req.query.location);
+      const selectedLocation = req.query.location;
+      if (selectedLocation && selectedLocation !== 'all') {
+        query = query.where('mentalhealthstats.location', selectedLocation);
       }
   
       // Execute the query
       const data = await query;
   
       // Render the viewData.ejs file with the fetched data
-      res.render('viewData', { data, selectedLocation: req.query.location });
+      res.render('viewData', { data, selectedLocation });
     } catch (error) {
       console.error('Error fetching data:', error);
       res.status(500).send('Internal Server Error');
     }
   });
+  
   
 app.listen(port, () => console.log("Express App has started and server is listening!"));

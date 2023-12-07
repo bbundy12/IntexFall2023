@@ -12,13 +12,11 @@
   <h1>Mental Health Stats Data</h1>
 
   <form action="/viewData" method="get">
-    <label for="locationFilter">Filter by Location:</label>
-    <select id="locationFilter" name="location">
-      <!-- Populate dropdown with unique locations from the data -->
-      <% const uniqueLocations = [...new Set(data.map(item => item.location))] %>
-      <% for (let location of uniqueLocations) { %>
-        <option value="<%= location %>"><%= location %></option>
-      <% } %>
+    <label for="location">Filter by Location:</label>
+    <select name="location" id="location">
+      <option value="all">All Locations</option>
+      <option value="Plainsville">Plainsville</option>
+      <option value="Provo">Provo</option>
     </select>
     <button type="submit">Apply Filter</button>
   </form>

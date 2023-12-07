@@ -1,0 +1,135 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  width: calc(100vw - 40px);
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--secondary-dark);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+}
+
+nav p {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 1.75em;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+nav p small {
+  font-size: 0.5em;
+  font-weight: 300;
+  margin: 0 15px;
+}
+
+nav a {
+  color: white;
+  background-color: var(--secondary-dark);
+  border: 2px solid white;
+  font-size: 1.2em;
+  font-weight: 500;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.35s ease-in-out;
+  border-radius: 5px;
+}
+
+nav a:hover {
+  color: var(--secondary-dark);
+  background-color: white;
+  border: 2px transparent solid;
+}
+
+header {
+  display: flex;
+  width: calc(100% - 100px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(50vh);
+}
+
+header h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--secondary-dark);
+  margin: 0;
+  text-align: center;
+}
+
+header p {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--secondary-dark);
+  margin: 0;
+  text-align: center;
+  max-width: 1000px;
+}
+
+header a {
+  background-color: var(--primary-color);
+  color: white;
+  border: 2px transparent solid;
+  font-size: 1.2em;
+  font-weight: 500;
+  padding: 15px 20px;
+  margin: 20px 0 0 0;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.35s ease-in-out;
+  border-radius: 5px;
+}
+
+header a:hover {
+  color: var(--primary-color);
+  background-color: white;
+  border: 2px solid var(--primary-color);
+}
+
+#dashboard-container {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+#dashboard-error-message {
+  display: none;
+  margin: 100px 0 200px 0;
+}
+
+/* Hide/Show Dashboard */
+@media only screen and (min-width: 681px) and (max-width: 1080px) {
+  #dashboard-container {
+    display: none;
+  }
+
+  #dashboard-error-message {
+    display: block;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 680px) {
+  footer {
+    width: calc(100% - 100px);
+    margin: 50px 0 0 0;
+  }
+
+  #dashboard-container {
+    display: none;
+  }
+
+  #dashboard-error-message {
+    display: block;
+  }
+}

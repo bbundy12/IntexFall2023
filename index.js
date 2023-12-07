@@ -91,8 +91,9 @@ app.post("/storeUser", async (req, res) => {
       .select('Username');
 
     if (existingUser.length > 0) {
-      // If the username already exists, display an error
-      res.status(400).json({ error: "Username Already Taken" });
+      // If the username already exists, render the createUser page with an error
+      res.render('createUser', { error: "Username Already Taken" });
+      return; // Add return to stop further execution
     } else {
       // If the username is not taken, insert the new user
       await knex("users").insert({ Username: req.body.username, Password: req.body.password });
@@ -103,6 +104,7 @@ app.post("/storeUser", async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 
 app.get('/editUser', (req, res) => {

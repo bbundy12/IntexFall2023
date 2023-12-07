@@ -39,6 +39,13 @@
   <form action="/storeUser" method="post" onsubmit="return validateForm()">
     <h2>Create Account</h2>
 
+    <% if (typeof error !== 'undefined') { %>
+      <p class="error-message"><%= error %></p>
+    <% } %>
+
+    <!-- Error Message -->
+    <p id="error-message">Passwords Don't Match</p>
+
     <!-- Create Account Input -->
     <label for="username">Username</label>
     <input id="username" name="username" type="text">
@@ -46,9 +53,6 @@
     <input id="password" name="password" type="password">
     <label for="confirmPassword">Confirm Password</label>
     <input id="confirmPassword" name="confirmPassword" type="password">
-
-    <!-- Error Message -->
-    <p id="error-message">Passwords Don't Match</p>
 
     <!-- Create Account Submit -->
     <button type="submit">Create Your Account</button>

@@ -3,87 +3,174 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>View Data</title>
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.png" type="image/x-icon">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/table.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <h1>Mental Health Stats Data</h1>
+  <div id="table-filter-container">
+    <!-- Title -->
+    <h2>Social Media Mental Health Survey Data</h2>
 
-  <form action="/viewData" method="get">
-    <label for="location">Filter by Location:</label>
-    <select name="location" id="location">
-      <option value="all">All Locations</option>
-      <option value="Plainsville">Plainsville</option>
-      <option value="Provo">Provo</option>
-    </select>
-    <button type="submit">Apply Filter</button>
-  </form>
+    <!-- Table Filters -->
+    <form action="/viewData" method="get">
 
-  <table border="1">
-    <tr>
-      <!-- Display Mental Health Stats columns -->
-      <th>Timestamp</th>
-      <th>Location</th>
-      <th>Age</th>
-      <th>Gender</th>
-      <th>Relationship Status</th>
-      <th>Occupation Status</th>
-      <th>Affiliated with University</th>
-      <th>Affiliated with School</th>
-      <th>Affiliated with Private</th>
-      <th>Affiliated with Company</th>
-      <th>Affiliated with Government</th>
-      <th>Social Media Usage</th>
-      <th>Social Media Platforms Used</th>
-      <th>Average Time on Social Media</th>
-      <th>Social Media Usage Without Purpose</th>
-      <th>Social Media Distraction Frequency</th>
-      <th>Restlessness Due to Social Media</th>
-      <th>General Distractibility Scale</th>
-      <th>General Worry Bother Scale</th>
-      <th>General Difficulty Concentrating</th>
-      <th>Comparing Yourself to Other Successful People Frequency</th>
-      <th>Feelings About Social Media Comparisons</th>
-      <th>Seek Validation from Social Media</th>
-      <th>General Depression Frequency</th>
-      <th>General Daily Activities Interest Fluctuation Scale</th>
-      <th>General Sleep Issues Scale</th>
-    </tr>
+      <!-- Input Container -->
+      <div id="input-container">
 
-    <% for (let i = 0; i < data.length; i++) { %>
+        <!-- Location -->
+        <div>
+          <p>Location</p>
+          <div class="radioSelector">
+            <input id="all" value="all" name="location" type="radio" selected />
+            <label for="all" style="border-radius: 2px 0 0 2px;">All</label>
+            <input id="plainsville" value="Plainsville" name="location" type="radio" />
+            <label for="plainsville">Plainsville</label>
+            <input id="provo" value="Provo" name="location" type="radio" />
+            <label for="provo" style="border-radius: 0 2px 2px 0;">Provo</label>
+          </div>
+        </div>
+
+        <!-- Person ID -->
+        <div>
+          <p>Person ID</p>
+          <input id="person-id" type="number" name="person_id" required />
+        </div>
+      </div>
+
+      <!-- Apply Filters -->
+      <button type="submit">Apply Filter</button>
+    </form>
+  </div>
+
+  <!-- Table -->
+  <div id="table-container">
+    <table>
       <tr>
-        <!-- Display Mental Health Stats data -->
-        <td><%= new Date(data[i].timestamp).toLocaleString() %></td>
-        <td><%= data[i].location %></td>
-        <td><%= data[i].age %></td>
-        <td><%= data[i].gender %></td>
-        <td><%= data[i].relationship_status %></td>
-        <td><%= data[i].occupation_status %></td>
-        <td><%= data[i].affiliated_with_university %></td>
-        <td><%= data[i].affiliated_with_school %></td>
-        <td><%= data[i].affiliated_with_private %></td>
-        <td><%= data[i].affiliated_with_company %></td>
-        <td><%= data[i].affiliated_with_government %></td>
-        <td><%= data[i].social_media_usage %></td>
-        <td><%= data[i].social_media_platforms_used.join(', ') %></td>
-        <td><%= data[i].average_time_on_social_media %></td>
-        <td><%= data[i].social_media_usage_without_purpose %></td>
-        <td><%= data[i].social_media_distraction_frequency %></td>
-        <td><%= data[i].restlessness_due_to_social_media %></td>
-        <td><%= data[i].general_distractibility_scale %></td>
-        <td><%= data[i].general_worry_bother_scale %></td>
-        <td><%= data[i].general_difficulty_concentrating %></td>
-        <td><%= data[i].comparing_yourself_to_other_successful_people_frequency %></td>
-        <td><%= data[i].feelings_about_social_media_comparisons %></td>
-        <td><%= data[i].seek_validation_from_social_media %></td>
-        <td><%= data[i].general_depression_frequency %></td>
-        <td><%= data[i].general_daily_activities_interest_fluctuation_scale %></td>
-        <td><%= data[i].general_sleep_issues_scale %></td>
+        <th>Person ID</th>
+        <th>Timestamp</th>
+        <th>Location</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Relationship Status</th>
+        <th>Occupation Status</th>
+        <th>Affiliated with University</th>
+        <th>Affiliated with School</th>
+        <th>Affiliated with Private</th>
+        <th>Affiliated with Company</th>
+        <th>Affiliated with Government</th>
+        <th>Social Media Usage</th>
+        <th>Social Media Platforms Used</th>
+        <th>Average Time on Social Media</th>
+        <th>Social Media Usage Without Purpose</th>
+        <th>Social Media Distraction Frequency</th>
+        <th>Restlessness Due to Social Media</th>
+        <th>General Distractibility Scale</th>
+        <th>General Worry Bother Scale</th>
+        <th>General Difficulty Concentrating</th>
+        <th>Comparing Yourself to Other Successful People Frequency</th>
+        <th>Feelings About Social Media Comparisons</th>
+        <th>Seek Validation from Social Media</th>
+        <th>General Depression Frequency</th>
+        <th>General Daily Activities Interest Fluctuation Scale</th>
+        <th>General Sleep Issues Scale</th>
+      </tr>
+      <% for (let i=0; i < data.length; i++) { %>
+        <tr>
+          <td>
+            <%= data[i].person_id %>
+          </td>
+          <td>
+            <%= new Date(data[i].timestamp).toLocaleString() %>
+          </td>
+          <td>
+            <%= data[i].location %>
+          </td>
+          <td>
+            <%= data[i].age %>
+          </td>
+          <td>
+            <%= data[i].gender %>
+          </td>
+          <td>
+            <%= data[i].relationship_status %>
+          </td>
+          <td>
+            <%= data[i].occupation_status %>
+          </td>
+          <td>
+            <%= data[i].affiliated_with_university %>
+          </td>
+          <td>
+            <%= data[i].affiliated_with_school %>
+          </td>
+          <td>
+            <%= data[i].affiliated_with_private %>
+          </td>
+          <td>
+            <%= data[i].affiliated_with_company %>
+          </td>
+          <td>
+            <%= data[i].affiliated_with_government %>
+          </td>
+          <td>
+            <%= data[i].social_media_usage %>
+          </td>
+          <td>
+            <%= data[i].social_media_platforms_used.join(', ') %>
+        </td>
+        <td>
+        <%= data[i].average_time_on_social_media %>
+        </td>
+        <td>
+        <%= data[i].social_media_usage_without_purpose %>
+        </td>
+        <td>
+        <%= data[i].social_media_distraction_frequency %>
+        </td>
+        <td>
+        <%= data[i].restlessness_due_to_social_media %>
+        </td>
+        <td>
+        <%= data[i].general_distractibility_scale %>
+        </td>
+        <td>
+        <%= data[i].general_worry_bother_scale %>
+        </td>
+        <td>
+        <%= data[i].general_difficulty_concentrating %>
+        </td>
+        <td>
+        <%= data[i].comparing_yourself_to_other_successful_people_frequency %>
+        </td>
+        <td>
+        <%= data[i].feelings_about_social_media_comparisons %>
+        </td>
+        <td>
+        <%= data[i].seek_validation_from_social_media %>
+        </td>
+        <td>
+        <%= data[i].general_depression_frequency %>
+        </td>
+        <td>
+        <%= data[i].general_daily_activities_interest_fluctuation_scale %>
+        </td>
+        <td>
+        <%= data[i].general_sleep_issues_scale %>
+        </td>
       </tr>
     <% } %>
   </table>
+  </div>
 </body>
 
 </html>

@@ -56,7 +56,7 @@ nav a:hover {
 
 header {
   display: flex;
-  width: calc(100% - 100px);
+  width: calc(100vw - 100px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -64,7 +64,7 @@ header {
 }
 
 header h2 {
-  font-size: 3.5rem;
+  font-size: 3.5em;
   font-weight: 700;
   color: var(--secondary-dark);
   margin: 0;
@@ -72,7 +72,7 @@ header h2 {
 }
 
 header p {
-  font-size: 1.25rem;
+  font-size: 1.25em;
   font-weight: 300;
   color: var(--secondary-dark);
   margin: 0;
@@ -108,7 +108,7 @@ header a:hover {
 
 #dashboard-error-message {
   display: none;
-  margin: 100px 0 200px 0;
+  height: calc(100vh - 500px);
 }
 
 /* Hide/Show Dashboard */
@@ -124,9 +124,39 @@ header a:hover {
 
 /* Mobile */
 @media only screen and (max-width: 680px) {
+  body {
+    font-size: 12px;
+  }
+
+  nav p {
+    margin: 0 20px 0 0;
+  }
+
+  nav p small {
+    /* font-size: 0.5em;
+    font-weight: 300;
+    margin: 0 15px; */
+    display: none;
+  }
+
+  nav a {
+    display: flex;
+    align-items: center; /* Vertically center items */
+    justify-content: center;
+  }
+
   footer {
-    width: calc(100% - 100px);
+    width: calc(100vw - 100px);
     margin: 50px 0 0 0;
+    padding: 0 50px;
+  }
+
+  footer :last-child {
+    text-align: right;
+  }
+
+  footer :first-child {
+    text-align: left;
   }
 
   #dashboard-container {

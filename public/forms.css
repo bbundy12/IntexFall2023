@@ -8,7 +8,7 @@ body {
 form {
   min-width: 375px;
   max-width: 675px;
-  width: calc(100% - 200px);
+  width: calc(100vw - 200px);
   margin: 100px 0;
   padding: 35px 50px 50px 50px;
   border-radius: 10px;
@@ -50,7 +50,7 @@ input[type="password"],
 select {
   margin: 0 0 30px 0;
   border: 1px solid var(--grey-accent);
-  width: 100%;
+  width: 100vw;
   height: 40px;
   box-sizing: border-box;
   border-radius: 2px;
@@ -63,7 +63,7 @@ input[type="number"]:focus {
 
 .radioSelector {
   display: flex;
-  width: 100%;
+  width: 100vw;
 }
 
 .radioSelector label {
@@ -155,7 +155,7 @@ input[type="number"]:focus {
 }
 
 .question-divider {
-  width: 100%;
+  width: 100vw;
   height: 1.5px;
   margin: 0 0 15px 0;
   background-color: var(--grey-accent);
@@ -168,7 +168,7 @@ form button {
   font-size: 0.9em;
   font-weight: 500;
   padding: 15px 0;
-  width: 100%;
+  width: 100vw;
   text-align: center;
   text-decoration: none;
   transition: 0.35s ease-in-out;
@@ -191,12 +191,27 @@ form button:hover {
 @media only screen and (max-width: 500px) {
   body {
     background-color: white;
+    font-size: 12px;
   }
 
   form {
-    padding: 100px 0 0 0;
+    padding: 100px 0;
     margin: 0;
     border-radius: 0;
     box-shadow: none;
+    align-items: center;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="password"],
+  select,
+  form p,
+  .radioSelector,
+  .token-container,
+  .question-divider,
+  .rating-container-1-5,
+  form button {
+    width: 80vw;
   }
 }

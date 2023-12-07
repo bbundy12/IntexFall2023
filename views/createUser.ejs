@@ -20,7 +20,7 @@
       // Check if localStorage username is "Admin"
       const storedUsername = localStorage.getItem('username');
 
-      if (storedUsername !== 'Admin' || storedUsername === null) {
+      if (storedUsername !== 'admin@provocity.org' || storedUsername === null) {
         // Redirect to a different page if the username is not "Admin"
         window.location.href = '/unauthorized';
       }

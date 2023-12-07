@@ -65,7 +65,7 @@ app.post('/login', async (req, res) => {
 
         console.log('Number of results:', users.length);
 
-        if (users.length == 1 && users[0].Username === 'Admin') {
+        if (users.length == 1 && users[0].Username === 'admin@provocity.org') {
             // If at least one user is found, you can redirect to a different route or render a page
             res.redirect('/adminLanding');
         } 

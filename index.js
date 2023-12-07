@@ -86,7 +86,7 @@ app.post('/login', async (req, res) => {
 app.post("/storeUser", (req, res) => {
     knex("users").insert({ Username: req.body.username, Password: req.body.password })
         .then(() => {
-            res.redirect("/");
+            res.redirect("accountCreated");
         })
         .catch((err) => {
             console.error('Error storing user:', err);

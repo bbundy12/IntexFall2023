@@ -56,11 +56,6 @@
 
   <!-- JavaScript -->
   <script>
-    // Check if local storage username/password are equal to "Admin" "Admin"
-    const storedUsername = localStorage.getItem('username');
-    const storedPassword = localStorage.getItem('password');
-
-    if (storedUsername === 'Admin' && storedPassword === 'Admin') {
       function validateForm() {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
@@ -77,7 +72,6 @@
         return true; // Allow form submission
 
       }
-    }
   </script>
 </div>
 </body>

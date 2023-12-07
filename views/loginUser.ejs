@@ -40,9 +40,9 @@
 
         <!-- Log In Input -->
         <label for="username">Username</label>
-        <input id="username" type="text" name="Username">
+        <input id="username" type="text" name="username">
         <label for="password">Password</label>
-        <input id="password" type="password" name="Password">
+        <input id="password" type="password" name="password">
 
         <!-- Log In Submit -->
         <button type="submit">Log In to Your Account</button>
@@ -52,17 +52,6 @@
     document.getElementById('loginForm').addEventListener('submit', function (event) {
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
-
-      // Check if the credentials are "Admin" for both username and password
-      if (username === 'Admin' && password === 'Admin') {
-        // Store username and password in local storage
-        localStorage.setItem('username', username);
-      }
-      else {
-        // Store username and password in local storage
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
-      }
     });
   </script>
   

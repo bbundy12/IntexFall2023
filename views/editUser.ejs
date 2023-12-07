@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!-- 
+  Section 003
+  Group 15
+  Brendan Bundy, Jakob Blosil, McKenna Alder, Tanner Atkin
+
+  This page allows a user to edit their own password with confirmation of previous password.
+ -->
 <html lang="en">
 
 <head>
@@ -19,7 +26,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       // Check if localStorage username is "Admin"
       const storedUsername = localStorage.getItem('username');
-  
+
       if (storedUsername === null) {
         // Redirect to a different page if the username is not "Admin"
         window.location.href = '/unauthorized';
@@ -33,66 +40,66 @@
 </head>
 
 <body>
-<div id="body-content">
-  <!-- Start of Form -->
-  <form id="editUserForm" action="/updatePassword" method="post" onsubmit="return validateForm()">
-    <h2>Edit Account</h2>
+  <div id="body-content">
+    <!-- Start of Form -->
+    <form id="editUserForm" action="/updatePassword" method="post" onsubmit="return validateForm()">
+      <h2>Edit Account</h2>
 
-    <!-- Edit User Input - Username -->
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" required>
+      <!-- Edit User Input - Username -->
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" required>
 
-    <!-- Edit User Input - Current Password -->
-    <label for="currentPassword">Current Password</label>
-    <input id="currentPassword" name="currentPassword" type="password" required>
+      <!-- Edit User Input - Current Password -->
+      <label for="currentPassword">Current Password</label>
+      <input id="currentPassword" name="currentPassword" type="password" required>
 
-    <!-- Edit User Input - New Password -->
-    <label for="newPassword">New Password</label>
-    <input id="newPassword" name="newPassword" type="password" required>
+      <!-- Edit User Input - New Password -->
+      <label for="newPassword">New Password</label>
+      <input id="newPassword" name="newPassword" type="password" required>
 
-    <!-- Edit User Input - Confirm New Password -->
-    <label for="confirmNewPassword">Confirm New Password</label>
-    <input id="confirmNewPassword" name="confirmNewPassword" type="password" required>
+      <!-- Edit User Input - Confirm New Password -->
+      <label for="confirmNewPassword">Confirm New Password</label>
+      <input id="confirmNewPassword" name="confirmNewPassword" type="password" required>
 
-    <!-- Error Message -->
-    <p id="error-message"></p>
+      <!-- Error Message -->
+      <p id="error-message"></p>
 
-    <!-- Edit User Submit -->
-    <button type="submit">Update Password</button>
-  </form>
+      <!-- Edit User Submit -->
+      <button type="submit">Update Password</button>
+    </form>
 
-  <!-- JavaScript -->
-  <script>
+    <!-- JavaScript -->
+    <script>
 
-    // Check if local storage passwords match
-    function validateForm() {
-      // Get values from password fields
-      var newPassword = document.getElementById('newPassword').value;
-      var confirmNewPassword = document.getElementById('confirmNewPassword').value;
-      var enteredUsername = document.getElementById('username').value;
-      var storedUsername = localStorage.getItem('username');
+      // Check if local storage passwords match
+      function validateForm() {
+        // Get values from password fields
+        var newPassword = document.getElementById('newPassword').value;
+        var confirmNewPassword = document.getElementById('confirmNewPassword').value;
+        var enteredUsername = document.getElementById('username').value;
+        var storedUsername = localStorage.getItem('username');
 
-      if (storedUsername !== enteredUsername) {
-        // Display error message
-        document.getElementById('error-message').innerText = 'Enter Your Username.';
-        document.getElementById('error-message').style.display = 'block';
-        return false; // Prevent form submission
+        if (storedUsername !== enteredUsername) {
+          // Display error message
+          document.getElementById('error-message').innerText = 'Enter Your Username.';
+          document.getElementById('error-message').style.display = 'block';
+          return false; // Prevent form submission
+        }
+
+        // Check if passwords match
+        if (newPassword !== confirmNewPassword) {
+          // Display error message
+          document.getElementById('error-message').innerText = 'Passwords do not match.';
+          document.getElementById('error-message').style.display = 'block';
+          return false; // Prevent form submission
+        }
+
+        // Hide error message if passwords match
+        document.getElementById('error-message').style.display = 'none';
+        return true; // Allow form submission
       }
-
-      // Check if passwords match
-      if (newPassword !== confirmNewPassword) {
-        // Display error message
-        document.getElementById('error-message').innerText = 'Passwords do not match.';
-        document.getElementById('error-message').style.display = 'block';
-        return false; // Prevent form submission
-      }
-
-      // Hide error message if passwords match
-      document.getElementById('error-message').style.display = 'none';
-      return true; // Allow form submission
-    }
-  </script>
-</div>
+    </script>
+  </div>
 </body>
 
 </html>

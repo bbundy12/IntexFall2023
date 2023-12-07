@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!-- 
+  Section 003
+  Group 15
+  Brendan Bundy, Jakob Blosil, McKenna Alder, Tanner Atkin
+
+  This page allows the admin to create a new user.
+ -->
 <html lang="en">
 
 <head>
@@ -35,31 +42,33 @@
 
 <body>
   <div id="body-content">
-  <!-- Start of Form -->
-  <form action="/storeUser" method="post" onsubmit="return validateForm()">
-    <h2>Create Account</h2>
+    <!-- Start of Form -->
+    <form action="/storeUser" method="post" onsubmit="return validateForm()">
+      <h2>Create Account</h2>
 
-    <% if (typeof error !== 'undefined') { %>
-      <p id="error-message" style="display: block;"><%= error %></p>
-    <% } %>
+      <% if (typeof error !=='undefined' ) { %>
+        <p id="error-message" style="display: block;">
+          <%= error %>
+        </p>
+        <% } %>
 
-    <!-- Error Message -->
-    <p id="error-message">Passwords Don't Match</p>
+          <!-- Error Message -->
+          <p id="error-message">Passwords Don't Match</p>
 
-    <!-- Create Account Input -->
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text">
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password">
-    <label for="confirmPassword">Confirm Password</label>
-    <input id="confirmPassword" name="confirmPassword" type="password">
+          <!-- Create Account Input -->
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password">
+          <label for="confirmPassword">Confirm Password</label>
+          <input id="confirmPassword" name="confirmPassword" type="password">
 
-    <!-- Create Account Submit -->
-    <button type="submit">Create Your Account</button>
-  </form>
+          <!-- Create Account Submit -->
+          <button type="submit">Create Your Account</button>
+    </form>
 
-  <!-- JavaScript -->
-  <script>
+    <!-- JavaScript -->
+    <script>
       function validateForm() {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
@@ -76,8 +85,8 @@
         return true; // Allow form submission
 
       }
-  </script>
-</div>
+    </script>
+  </div>
 </body>
 
 </html>

@@ -1,10 +1,17 @@
 <!DOCTYPE html>
+<!-- 
+  Section 003
+  Group 15
+  Brendan Bundy, Jakob Blosil, McKenna Alder, Tanner Atkin
+
+  This page is displayed when a user successfully logs out.
+ -->
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unauthorized Access</title>
+  <title>Log Out Successful</title>
   <!-- Favicon -->
   <link rel="icon" href="/favicon.png" type="image/x-icon">
   <!-- CSS -->
@@ -15,17 +22,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <!-- clears local storage when login page loads -->
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-          // Clear local storage for username and password
-          localStorage.removeItem('username');
-        });
-    </script>
+  <!-- clears local storage when login page loads -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      // Clear local storage for username and password
+      localStorage.removeItem('username');
+    });
+  </script>
 </head>
 
 <body>
-  <h2>Logout Successful</h2>
+  <h2>Log Out Successful</h2>
   <p>You will now be redirected to the home page.</p>
   <a href="/">Ok</a>
 </body>

@@ -232,6 +232,7 @@ app.get('/viewData', async (req, res) => {
           'mentalhealthstats.affiliated_with_company',
           'mentalhealthstats.affiliated_with_government',
           'mentalhealthstats.social_media_usage',
+          knex.raw('array_agg(socialmedia.social_media_platform) as social_media_platforms_used'),
           'mentalhealthstats.average_time_on_social_media',
           'mentalhealthstats.social_media_usage_without_purpose',
           'mentalhealthstats.social_media_distraction_frequency',
@@ -245,7 +246,6 @@ app.get('/viewData', async (req, res) => {
           'mentalhealthstats.general_depression_frequency',
           'mentalhealthstats.general_daily_activities_interest_fluctuation_scale',
           'mentalhealthstats.general_sleep_issues_scale',
-          knex.raw('array_agg(socialmedia.social_media_platform) as social_media_platforms_used')
         )
         .from('mentalhealthstats')
         .leftJoin('socialmedia', 'mentalhealthstats.person_id', '=', 'socialmedia.person_id')

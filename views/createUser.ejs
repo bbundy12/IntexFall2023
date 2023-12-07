@@ -24,13 +24,17 @@
         // Redirect to a different page if the username is not "Admin"
         window.location.href = '/unauthorized';
       }
+      else {
+        // Show the content if the user is authorized
+        document.getElementById('body-content').style.display = 'flex';
+      }
     });
   </script>
 </head>
 
 
 <body>
-
+  <div id="body-content">
   <!-- Start of Form -->
   <form action="/storeUser" method="post" onsubmit="return validateForm()">
     <h2>Create Account</h2>
@@ -75,6 +79,7 @@
       }
     }
   </script>
+</div>
 </body>
 
 </html>

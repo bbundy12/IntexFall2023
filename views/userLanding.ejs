@@ -25,6 +25,10 @@
       // Redirect to a different page if the username is not "Admin"
       window.location.href = '/adminLanding';
     }
+    else {
+        // Show the content if the user is authorized
+        document.getElementById('body-content').style.display = 'flex';
+      }
   });
 </script>
 </head>
@@ -37,7 +41,7 @@
 </script>
 
 <body>
-
+  <div id="body-content">
   <!-- Navbar -->
   <nav>
     <p><small>Signed in as:</small>User</p>
@@ -104,6 +108,7 @@
     <p>© 2023, Incorperated Inc.</p>
     <p>Updated December 2023</p>
   </footer>
+</div>
 </body>
 
 </html>

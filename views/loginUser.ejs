@@ -52,8 +52,8 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: username,
-          password: password,
+          Username: username,  // Uppercase version for the username
+          Password: password,  // Uppercase version for the password
         }),
       })
         .then(response => response.json())
@@ -78,7 +78,7 @@
           console.error('Error during login:', error);
         });
     });
-  </script>
+</script>
 </body>
 
 </html>

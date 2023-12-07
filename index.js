@@ -268,16 +268,23 @@ app.get('/viewData', async (req, res) => {
         query = query.where('mentalhealthstats.location', selectedLocation);
       }
   
+      // Apply person_id filter if provided in the form
+      const personIdFilter = req.query.person_id;
+      if (personIdFilter) {
+        query = query.where('mentalhealthstats.person_id', personIdFilter);
+      }
+  
       // Execute the query
       const data = await query;
   
       // Render the viewData.ejs file with the fetched data
-      res.render('viewData', { data, selectedLocation });
+      res.render('viewData', { data, selectedLocation, personIdFilter });
     } catch (error) {
       console.error('Error fetching data:', error);
       res.status(500).send('Internal Server Error');
     }
   });
+  
 
   app.get('/logout', (req, res) => {
     res.render('index');

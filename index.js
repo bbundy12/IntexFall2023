@@ -249,7 +249,8 @@ app.get('/viewData', async (req, res) => {
         )
         .from('mentalhealthstats')
         .leftJoin('socialmedia', 'mentalhealthstats.person_id', '=', 'socialmedia.person_id')
-        .groupBy('mentalhealthstats.person_id');
+        .groupBy('mentalhealthstats.person_id')
+        .orderBy('mentalhealthstats.location');
   
       // Apply location filter if selected in the form
       const selectedLocation = req.query.location;

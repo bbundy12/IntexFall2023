@@ -176,6 +176,8 @@ app.get('/adminLanding', (req, res) => {
       hour12: false
     });
   
+    console.log(timestamp)
+    
     const handleNullOrUndefined = (value) => {
       return value !== undefined && value !== null ? value : false;
     };

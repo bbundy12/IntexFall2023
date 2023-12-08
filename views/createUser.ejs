@@ -53,7 +53,7 @@
         <% } %>
 
           <!-- Error Message -->
-          <p id="error-message">Passwords Don't Match</p>
+          <p id="password-error">Passwords Don't Match</p>
 
           <!-- Create Account Input -->
           <label for="username">Username</label>
@@ -76,12 +76,12 @@
         // Check if passwords match
         if (password !== confirmPassword) {
           // Display error message
-          document.getElementById('error-message').style.display = 'block';
+          document.getElementById('password-error').style.display = 'block';
           return false; // Prevent form submission
         }
 
         // Hide error message if passwords match
-        document.getElementById('error-message').style.display = 'none';
+        document.getElementById('password-error').style.display = 'none';
         return true; // Allow form submission
 
       }

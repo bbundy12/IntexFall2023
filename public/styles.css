@@ -33,7 +33,7 @@ table {
 }
 
 footer {
-  width: calc(100% - 200px);
+  width: calc(100vw - 200px);
   height: 100px;
   margin: 100px 0 0 0;
   padding: 0 100px 0 100px;

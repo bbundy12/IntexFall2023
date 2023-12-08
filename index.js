@@ -177,7 +177,7 @@ app.get('/adminLanding', (req, res) => {
     });
   
     console.log(timestamp)
-    
+
     const handleNullOrUndefined = (value) => {
       return value !== undefined && value !== null ? value : false;
     };
@@ -275,7 +275,7 @@ app.get('/viewData', async (req, res) => {
         .from('mentalhealthstats')
         .leftJoin('socialmedia', 'mentalhealthstats.person_id', '=', 'socialmedia.person_id')
         .groupBy('mentalhealthstats.person_id')
-        .orderBy('mentalhealthstats.location');
+        .orderBy('mentalhealthstats.person_id');
   
       // Apply location filter if selected in the form
       const selectedLocation = req.query.location;
